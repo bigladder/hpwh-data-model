@@ -1,8 +1,8 @@
 ---
 metadata:
-  data_model: ASHRAE_205
+  data_model: ASHRAE205
   schema_version: 1.0.0
-  schema: RS_INTEGRATED_HEAT_PUMP_WATER_HEATER
+  schema: RSINTEGRATEDHEATPUMPWATERHEATER
   description: Rheem 2020 Premium, 50-gallon integrated heat-pump water heater
   id: 6998e64f-7824-414c-9d48-57e43ee47071
   data_timestamp: 2022-11-23T11:45Z
@@ -21,7 +21,7 @@ performance:
   tank:
     metadata:
       schema_version: 1.0.0
-      data_model: ASHRAE_205
+      data_model: ASHRAE205
       schema: RS_TANK
       description: Generic tank
       id: XXXX-XXXX-XXXXX
@@ -41,8 +41,8 @@ performance:
   heat_source_configurations:
     - heat_source:
         metadata:
-          data_model: ASHRAE_205
-          schema: RS_RESISTANCE_WATER_HEAT_SOURCE
+          data_model: ASHRAE205
+          schema: RSRESISTANCEWATERHEATSOURCE
           schema_version: 1.0.0
           description: Thermistor
           id: XXXX-XXXX-XXXXX
@@ -63,14 +63,12 @@ performance:
         evaluation_criterion: MAXIMUM
         comparison_type: LESS_THAN
         hysteresis_temperature: 0
-      maximum_temperature: 273.15
-      minimum_temperature: 373.15
       maximum_setpoint: 373.15
             
     - heat_source:
         metadata:
-          data_model: ASHRAE_205
-          schema: RS_CONDENSER_WATER_HEAT_SOURCE
+          data_model: ASHRAE205
+          schema: RSCONDENSERWATERHEATSOURCE
           schema_version: 1.0.0
           description: Condenser coil
           id: XXXX-XXXX-XXXXX
@@ -110,8 +108,8 @@ performance:
                                     
     - heat_source:
         metadata:
-          data_model: ASHRAE_205
-          schema: RS_RESISTANCE_WATER_HEAT_SOURCE
+          data_model: ASHRAE205
+          schema: RSRESISTANCEWATERHEATSOURCE
           schema_version: 1.0.0
           description: Thermistor
           id: XXXX-XXXX-XXXXX
@@ -132,6 +130,4 @@ performance:
         evaluation_criterion: MAXIMUM
         comparison_type: LESS_THAN
         hysteresis_temperature: 2.22
-      maximum_temperature: 273.15
-      minimum_temperature: 373.15
       maximum_setpoint: 373.15

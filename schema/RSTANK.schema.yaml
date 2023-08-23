@@ -48,12 +48,12 @@ Performance:
     volume:
       Data Type: "Numeric"
       Units: "m" # should be m3
-      Range: ">= 0, <= 1"
+      Range: ">= 0"
       Required: True
     diameter:
       Data Type: "Numeric"
       Units: "m"
-      Range: ">= 0, <= 1"
+      Range: ">= 0"
       Required: False
     ua:
       Data Type: "Numeric"

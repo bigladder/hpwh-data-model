@@ -69,7 +69,15 @@ SchemaType:
       Description: "Electronic Motor Drive"
     RS0007:
       Description: "Mechanical Drive"
-
+    RSINTEGRATEDWATERHEATER:
+      Description: "Integrated Heat-Pump Water Heater"
+    RSTANK:
+      Description: "Water Tank"
+    RSRESISTANCEWATERHEATSOURCE:
+      Description: "Resistance Water Heat Source"
+    RSCONDENSERWATERHEATSOURCE:
+      Description: "Condenser Water Heat Source"
+      
 CompressorType:
   Object Type: "Enumeration"
   Enumerators:

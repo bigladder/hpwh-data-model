@@ -82,16 +82,6 @@ HeatSourceConfiguration:
       Description: "Checks the bottom is below a temperature so the system doesn't short cycle"
       Data Type: "[{HeatingLogic}]"
       Required: False
-    maximum_temperature:
-      Description: "Maximum temperature of operation"
-      Data Type: "Numeric"
-      Units: "K"
-      Required: False
-    minimum_temperature:
-      Description: "Minimum temperature of operation"
-      Data Type: "Numeric"
-      Units: "K"
-      Required: False
     maximum_setpoint:
       Description: "Maximum setpoint temperature"
       Data Type: Numeric
