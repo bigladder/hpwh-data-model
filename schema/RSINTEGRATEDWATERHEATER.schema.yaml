@@ -1,0 +1,137 @@
+Schema:
+  Object Type: "Meta"
+  References:
+    - "ASHRAE205"
+    - "RSTANK"
+    - "RSRESISTANCEWATERHEATSOURCE"
+    - "RSCONDENSERWATERHEATSOURCE"
+  Title: "Integrated Heat-Pump Water Heater"
+  Description: "Schema for ASHRAE 205 annex RSINTEGRATEDWATERHEATER: Integrated Heat-Pump Water Heater"
+  Version: "0.1.0"
+
+RSINTEGRATEDWATERHEATER:
+  Object Type: "Data Group"
+  Data Elements:
+    metadata:
+      Description: "Metadata data group"
+      Data Type: "{Metadata}"
+      Constraints: "schema=RSINTEGRATEDWATERHEATER"
+      Required: True
+    description:
+      Description: "Data group describing product and rating information"
+      Data Type: "{Description}"
+    performance:
+      Description: "Data group containing performance information"
+      Data Type: "{Performance}"
+      Required: True
+      
+Description:
+  Object Type: "Data Group"
+  Data Elements:
+    product_information:
+      Description: "Data group describing product information"
+      Data Type: "{ProductInformation}"
+      
+ProductInformation:
+  Object Type: "Data Group"
+  Data Elements:
+    manufacturer:
+      Description: "Manufacturer name"
+      Data Type: "String"
+      Required: True
+    model_number:
+      Description: "Model number"
+      Data Type: "Pattern"
+      Notes: "Pattern shall match all model numbers that can be represented by the representation"
+      Required: True
+
+Performance:
+  Object Type: "Data Group"
+  Data Elements:
+    tank:
+      Description: "The corresponding Standard 205 tank representation"
+      Data Type: "{RSTANK}"
+      Required: True
+    heat_source_configurations:
+      Object Type: "[{HeatSourceConfiguration}]"
+    number_of_nodes:
+      Description: "Number of nodes used for simulation (temporary)"
+      Data Type: "Integer"
+      Constrains: "> 0"
+      
+HeatSourceConfiguration:
+  Object Type: "Data Group"
+  Data Elements:
+    heat_source:
+      Description: "A corresponding Standard 205 heat-source representation"
+      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
+      Required: True
+    heat_distribution:
+      Description: "Weighted distribution of heat by division, in order"
+      Data Type: "[Numeric]"
+      Required: True    
+    turn_on_logic:
+      Description: ""
+      Data Type: "[{HeatingLogic}]"
+      Required: True    
+    shut_off_logic:
+      Description: ""
+      Data Type: "[{HeatingLogic}]"
+      Required: False
+    standby_logic:
+      Description: "Checks the bottom is below a temperature so the system doesn't short cycle"
+      Data Type: "[{HeatingLogic}]"
+      Required: False
+    maximum_temperature:
+      Description: "Maximum temperature of operation"
+      Data Type: "Numeric"
+      Units: "K"
+      Required: False
+    minimum_temperature:
+      Description: "Minimum temperature of operation"
+      Data Type: "Numeric"
+      Units: "K"
+      Required: False
+    maximum_setpoint:
+      Description: "Maximum setpoint temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: False
+       
+HeatingLogic:
+  Object Type: "Data Group"
+  Data Elements:        
+    absolute_temperature:
+      Constraints: ">=0.0"
+      Data Type: Numeric
+      Description: "Absolute temperature for activation"
+      Units: "K"
+      Required: "if !differential_temperature"
+    differential_temperature:
+      Description: "Temperature difference for activation"
+      Constraints: ">=0.0"
+      Data Type: Numeric
+      Units: "K"
+      Required: "if !absolute_temperature"
+    logic_distribution:
+      Description: "Weighted distribution for comparison, by division, in order"
+      Data Type: "[Numeric]"
+      Required: True   
+    comparison_type:
+      Description: "Result of comparison for activation"
+      Data Type: "<ComparisonType>" 
+      Required: True 
+    hysteresis_temperature:
+      Description: "Amount to surpass threshold temperature"
+      Data Type: Numeric
+      Required: False           
+      
+ComparisonType:
+  Object Type: "Enumeration"
+  Enumerators:
+    GREATER_THAN:
+      Description: "Decision value is greater than reference value"
+      Display Text: "Greater than"
+    LESS_THAN:
+      Description: "Decision value is less than reference value"
+      Display Text: "Less than"
