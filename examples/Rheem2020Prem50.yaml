@@ -2,7 +2,7 @@
 metadata:
   data_model: ASHRAE205
   schema_version: 1.0.0
-  schema: RSINTEGRATEDHEATPUMPWATERHEATER
+  schema: RSINTEGRATEDWATERHEATER
   description: Rheem 2020 Premium, 50-gallon integrated heat-pump water heater
   id: 6998e64f-7824-414c-9d48-57e43ee47071
   data_timestamp: 2022-11-23T11:45Z

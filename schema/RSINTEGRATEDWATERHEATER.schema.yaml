@@ -58,13 +58,36 @@ Performance:
       Description: "Number of nodes used for simulation (temporary)"
       Data Type: "Integer"
       Constrains: "> 0"
-      
+    standby_power:
+      Description: "Power drawn when system is in standby mode"
+      Data Type: "Numeric"
+      Constrains: "> 0"
+
+# Local Enumerations
+HeatSourceType:
+  Object Type: "Enumeration"
+  Enumerators:
+    RESISTANCE:
+      Description: "Heat sources that operate by electrical resistance"
+      Display Text: "Resistance"
+      Notes: ""
+    CONDENSER:
+      Description: "Heat sources that operate by coolant condenser systems"
+      Display Text: "Condenser"
+      Notes: ""
+
 HeatSourceConfiguration:
   Object Type: "Data Group"
   Data Elements:
+    heat_source_type:
+      Description: "Type of heat source"
+      Data Type: "{HeatSourceType}"
+      Required: True
+      Notes: "Determines which heat source data group is used for `heat_source`"    
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
+      Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat by division, in order"
