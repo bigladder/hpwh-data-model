@@ -1,0 +1,113 @@
+Schema:
+  Object Type: "Meta"
+  References:
+    - "ASHRAE205"
+  Title: "Condenser Water Heat Source"
+  Description: "Schema for ASHRAE 205 annex RSCONDENSERWATERHEATSOURCE: Condenser heat source"
+  Version: "0.1.0"
+
+RSCONDENSERWATERHEATSOURCE:
+  Object Type: "Data Group"
+  Data Elements:
+    metadata:
+      Description: "Metadata data group"
+      Data Type: "{Metadata}"
+      Constraints: "schema=RSCONDENSERWATERHEATSOURCE"
+      Required: True
+    description:
+      Description: "Data group describing product and rating information"
+      Data Type: "{Description}"
+    performance:
+      Description: "Data group containing performance information"
+      Data Type: "{Performance}"
+      Required: True
+      
+Description:
+  Object Type: "Data Group"
+  Data Elements:
+    product_information:
+      Description: "Data group describing product information"
+      Data Type: "{ProductInformation}"
+      
+ProductInformation:
+  Object Type: "Data Group"
+  Data Elements:
+    manufacturer:
+      Description: "Manufacturer name"
+      Data Type: "String"
+      Required: True
+    model_number:
+      Description: "Model number"
+      Data Type: "Pattern"
+      Notes: "Pattern shall match all model numbers that can be represented by the representation"
+      Required: True
+
+Performance:
+  Object Type: "Data Group"
+  Data Elements:
+    performance_map:
+      Description: "Collection of performance values"
+      Data Type: "{PerformanceMap}"
+      Required: True   
+    standby_power:
+      Description: ""
+      Data Type: "Numeric"
+      Units: "W"
+      Constraints: ">=0.0"       
+    coil_configuration:
+      Description: "Coil configuration"
+      Data Type: "<CoilConfiguration>"
+      Required: True    
+
+CoilConfiguration:
+  Object Type: "Enumeration"
+  Enumerators:
+    SUBMERGED:
+      Description: "Coil is submerged within the tank"
+      Display Text: "Submerged"
+    WRAPPED:
+      Description: "Coil is wrapped around the tank interior"
+      Display Text: "Wrapped"       
+    EXTERNAL:
+      Description: "Coil is external to the tank"
+      Display Text: "External"
+
+PerformanceMap:
+  Object Type: "Data Group"
+  Data Elements:
+    grid_variables:
+      Description: "Collection of values affecting performance."
+      Data Type: "{GridVariables}"
+      Required: True
+    lookup_variables:
+      Description: "Collection of performance metrics."
+      Data Type: "{LookupVariables}"
+      Required: True
+      
+GridVariables:
+  Object Type: "Data Group"
+  Data Elements:
+    evaporator_environment_temperature:
+      Description: "Evaporator environment temperatures (Nevap values)"
+      Data Type: "[Numeric]"
+      Units: "K"
+      Required: True
+    heat_source_temperature:
+      Description: "Temperature of heat sources (Nsrc values)"
+      Data Type: "[Numeric]"
+      Units: "K"
+      Required: True
+      
+LookupVariables:
+  Object Type: "Data Group"
+  Data Elements:
+    input_power:
+      Description: "Input power - Contains Nevap x Nsrc values"
+      Data Type: "[Numeric]"
+      Units: "W"
+      Required: True
+    cop:
+      Description: "Coefficient of performance - Contains Nevap x Nsrc values"
+      Data Type: "[Numeric]"
+      Units: "-"
+      Required: True   
