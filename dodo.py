@@ -15,3 +15,17 @@ def task_validate_example_files():
     'file_dep': data_model.examples + [schema.path for schema in data_model.schemas],
     'actions': [(data_model.validate_example_files,[])]
   }
+
+def task_generate_cpp_code():
+    '''Generate CPP headers and source for example schema.'''
+    return {
+        'file_dep': [schema.path for schema in data_model.cpp_schemas] +
+                    [schema.meta_schema_path for schema in data_model.schemas],
+        'targets': [schema.cpp_header_path for schema in data_model.cpp_schemas] +
+                    [schema.cpp_source_path for schema in data_model.cpp_schemas],
+        'actions': [
+          (data_model.generate_cpp_headers, [])
+        ],
+        'clean': True
+    }
+
