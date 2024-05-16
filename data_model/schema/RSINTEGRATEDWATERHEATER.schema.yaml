@@ -57,11 +57,7 @@ Performance:
       Data Type: "{RSTANK}"
       Required: True
     heat_source_configurations:
-      Object Type: "[{HeatSourceConfiguration}]"
-    number_of_nodes:
-      Description: "Number of nodes used for simulation (temporary)"
-      Data Type: "Integer"
-      Constrains: "> 0"
+      Data Type: "[{HeatSourceConfiguration}]"
     standby_power:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
