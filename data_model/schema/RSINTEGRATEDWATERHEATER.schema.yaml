@@ -62,8 +62,7 @@ Performance:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
-
-# Local Enumerations
+      
 HeatSourceType:
   Object Type: "Enumeration"
   Enumerators:
@@ -89,6 +88,10 @@ HeatSourceConfiguration:
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
       Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
       Required: True
+    label:
+      Description: "Identifier for reference"
+      Data Type: "String"
+      Required: True  
     heat_distribution:
       Description: "Weighted distribution of heat by division, in order"
       Data Type: "[Numeric]"
@@ -102,17 +105,109 @@ HeatSourceConfiguration:
       Data Type: "[{HeatingLogic}]"
       Required: False
     standby_logic:
-      Description: "Checks the bottom is below a temperature so the system doesn't short cycle"
-      Data Type: "[{HeatingLogic}]"
+      Description: "Checks that bottom is below a temperature to prevent short cycling"
+      Data Type: "{HeatingLogic}"
       Required: False
     maximum_setpoint:
       Description: "Maximum setpoint temperature"
       Data Type: Numeric
       Units: "K"
       Required: False
+    maximum_temperature:
+      Description: "Maximum external temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: False
+    minimum_temperature:
+      Description: "Minimum external temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: False
+    hysteresis_temperature_difference:
+      Description: "Hysteresis temperature difference for activation"
+      Data Type: Numeric
+      Units: "K"
+      Required: False
+    is_vip:
+      Description: "Turns on independently of other heat sources"
+      Data Type: Boolean
+      Required: False
+    depresses_temperature:
+      Description: "Depresses space temperature when activated"
+      Data Type: Boolean
+      Required: False
+    backup_heat_source_label: 
+      Description: "Identifier of backup heat source"
+      Data Type: "String"
+      Required: False
+    followed_by_heat_source_label: 
+      Description: "Identifier of heat source that follows"
+      Data Type: "String"
+      Required: False
+    companion_heat_source_label: 
+      Description: "Identifier of companion heat source"
+      Data Type: "String"
+      Required: False
+                                
+HeatSourceCoilConfiguration:
+  Object Type: "Enumeration"
+  Enumerators:
+    SUBMERGED:
+      Description: "Heat sources with submerged coil configuration"
+      Display Text: "Submerged"
+      Notes: ""
+    WRAPPED:
+      Description: "Heat sources with wrapped coil configuration"
+      Display Text: "Wrapped"
+      Notes: ""
+    EXTERNAL:
+      Description: "Heat sources with external coil configuration"
+      Display Text: "External"
+      Notes: ""
        
+HeatingLogicType:
+  Object Type: "Enumeration"
+  Enumerators:
+    SOC_BASED:
+      Description: "State-of-charge based"
+      Display Text: "SoC based"
+      Notes: ""
+    TEMP_BASED:
+      Description: "Temperature based"
+      Display Text: "Temp based"
+      Notes: ""
+                          
 HeatingLogic:
   Object Type: "Data Group"
+  Data Elements:        
+    heating_logic_type:
+      Description: "Type of heating logic"
+      Data Type: "{HeatingLogicType}"
+      Required: True
+      Notes: "Determines which heating-logic data group is used for `heating_logic`"  
+    heating_logic:
+      Description: "Specific heating logic"
+      Data Type: "({SoCBasedHeatingLogic},{TempBasedHeatingLogic})"
+      Constraints: "heating_logic_type(SOC_BASED, TEMP_BASED)"
+      Required: True  
+    comparison_type:
+      Description: "Result of comparison for activation"
+      Data Type: "<ComparisonType>" 
+      Required: True          
+      
+ComparisonType:
+  Object Type: "Enumeration"
+  Enumerators:
+    GREATER_THAN:
+      Description: "Decision value is greater than reference value"
+      Display Text: "Greater than"
+    LESS_THAN:
+      Description: "Decision value is less than reference value"
+      Display Text: "Less than"
+
+TempBasedHeatingLogic:
+  Object Type: "Data Group"
+  Data Group Template: "HeatingLogicBase"
   Data Elements:        
     absolute_temperature:
       Constraints: ">=0.0"
@@ -129,22 +224,35 @@ HeatingLogic:
     logic_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "[Numeric]"
-      Required: True   
-    comparison_type:
-      Description: "Result of comparison for activation"
-      Data Type: "<ComparisonType>" 
       Required: True 
-    hysteresis_temperature:
-      Description: "Amount to surpass threshold temperature"
+
+SoCBasedHeatingLogic:
+  Object Type: "Data Group"
+  Data Group Template: "HeatingLogicBase"
+  Data Elements: 
+    decision_point:
+      Description: "Decision point"
+      Constraints: ">=0.0"
       Data Type: Numeric
-      Required: False           
-      
-ComparisonType:
-  Object Type: "Enumeration"
-  Enumerators:
-    GREATER_THAN:
-      Description: "Decision value is greater than reference value"
-      Display Text: "Greater than"
-    LESS_THAN:
-      Description: "Decision value is less than reference value"
-      Display Text: "Less than"
+      Required: True        
+    minimum_useful_temperature:
+      Description: "Minimum useful temperature"
+      Data Type: Numeric
+      Required: False
+      Notes: "Determines which heating-logic data group is used for `heating_logic`"  
+    hysteresis_fraction:
+      Description: "Hysteresis fraction"
+      Data Type: Numeric
+      Units: "-"
+      Range: ">= 0, <= 1"
+      Required: False
+    uses_constant_mains:
+      Description: "Uses constant mains"
+      Data Type: Boolean
+      Required: True
+    constant_mains_temperature:
+      Description: "Constant mains temperature"
+      Constraints: ">=0.0"
+      Data Type: Numeric
+      Units: "K"
+      Required: "if uses_constant_mains"

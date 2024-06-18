@@ -64,7 +64,7 @@ Performance:
       Units: "W" # should be W/K
       Required: False
     bottom_fraction_of_tank_mixing_on_draw:
-      Description: "Bottom fraction of the tank that should mix during draws (simulation only?)"
+      Description: "Bottom fraction of the tank that should mix during draws"
       Data Type: "Numeric"
       Units: "-"
       Range: ">= 0, <= 1"
@@ -76,5 +76,9 @@ Performance:
       Description: "Number of nodes used for simulation"
       Data Type: "Integer"
       Constrains: "> 0"
+    heat_exchanger_effectiveness:  
+      Description: "Effectiveness for heat exchange"
+      Data Type: "Numeric"
+      Required: False
 
 

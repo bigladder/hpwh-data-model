@@ -8,6 +8,7 @@ Schema:
 
 RSRESISTANCEWATERHEATSOURCE:
   Object Type: "Data Group"
+  Data Group Template: "HeatSourceBase"
   Data Elements:
     metadata:
       Description: "Metadata data group"

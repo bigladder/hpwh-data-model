@@ -8,6 +8,7 @@ Schema:
 
 RSCONDENSERWATERHEATSOURCE:
   Object Type: "Data Group"
+  Data Group Template: "HeatSourceBase"
   Data Elements:
     metadata:
       Description: "Metadata data group"
@@ -45,33 +46,45 @@ ProductInformation:
 Performance:
   Object Type: "Data Group"
   Data Elements:
+    performance_points:
+      Description: "Collection of performance points"
+      Data Type: "[{PerformancePoint}]"
+      Required: "if !performance_map"  
     performance_map:
-      Description: "Collection of performance values"
+      Description: "Performance map"
       Data Type: "{PerformanceMap}"
-      Required: True   
+      Required: "if !performance_points"  
     standby_power:
       Description: ""
-      Data Type: "Numeric"
+      Data Type: Numeric
       Units: "W"
       Constraints: ">=0.0"       
     coil_configuration:
       Description: "Coil configuration"
-      Data Type: "<CoilConfiguration>"
-      Required: True    
-
-CoilConfiguration:
-  Object Type: "Enumeration"
-  Enumerators:
-    SUBMERGED:
-      Description: "Coil is submerged within the tank"
-      Display Text: "Submerged"
-    WRAPPED:
-      Description: "Coil is wrapped around the tank interior"
-      Display Text: "Wrapped"       
-    EXTERNAL:
-      Description: "Coil is external to the tank"
-      Display Text: "External"
-
+      Data Type: "{CoilConfiguration}"
+      Required: True
+    use_defrost_map:
+      Description: "Use defrost map"
+      Data Type: Boolean
+      Required: False
+                 
+PerformancePoint:
+  Object Type: "Data Group"
+  Data Elements:
+    heat_source_temperature:
+      Description: "Temperature of heat source"
+      Data Type: "Numeric"
+      Units: "K"
+      Required: True
+    input_power_coefficients:
+      Description: "Input-power polynomial expansion coefficients"
+      Data Type: "[Numeric]"
+      Required: True
+    cop_coefficients:
+      Description: "Coefficient-of-performance expansion coefficients"
+      Data Type: "[Numeric]"
+      Required: True
+      
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
@@ -83,7 +96,7 @@ PerformanceMap:
       Description: "Collection of performance metrics."
       Data Type: "{LookupVariables}"
       Required: True
-      
+
 GridVariables:
   Object Type: "Data Group"
   Data Elements:
@@ -102,12 +115,25 @@ LookupVariables:
   Object Type: "Data Group"
   Data Elements:
     input_power:
-      Description: "Input power - Contains Nevap x Nsrc values"
+      Description: "Input power (Nevap x Nsrc values)"
       Data Type: "[Numeric]"
       Units: "W"
       Required: True
     cop:
-      Description: "Coefficient of performance - Contains Nevap x Nsrc values"
+      Description: "Coefficient of performance (Nevap x Nsrc values)"
       Data Type: "[Numeric]"
       Units: "-"
-      Required: True   
+      Required: True
+
+CoilConfiguration:
+  Object Type: "Enumeration"
+  Enumerators:
+    SUBMERGED:
+      Description: "Coil is submerged within the tank"
+      Display Text: "Submerged"
+    WRAPPED:
+      Description: "Coil is wrapped around the tank interior"
+      Display Text: "Wrapped"       
+    EXTERNAL:
+      Description: "Coil is external to the tank"
+      Display Text: "External"
