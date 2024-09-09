@@ -9,5 +9,5 @@ build_out_dir = "../../src/data_model"
 
 lat = Lattice(root_dir, build_dir,  build_out_dir, False)
 
-lat.generate_cpp_headers()
+lat.generate_cpp_project()
 
