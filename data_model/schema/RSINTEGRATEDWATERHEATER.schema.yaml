@@ -207,7 +207,7 @@ ComparisonType:
 
 TempBasedHeatingLogic:
   Object Type: "Data Group"
-  Data Group Template: "HeatingLogicBase"
+  Data Group Template: HeatingLogicBase
   Data Elements:        
     absolute_temperature:
       Constraints: ">=0.0"
@@ -228,7 +228,7 @@ TempBasedHeatingLogic:
 
 SoCBasedHeatingLogic:
   Object Type: "Data Group"
-  Data Group Template: "HeatingLogicBase"
+  Data Group Template: HeatingLogicBase
   Data Elements: 
     decision_point:
       Description: "Decision point"
