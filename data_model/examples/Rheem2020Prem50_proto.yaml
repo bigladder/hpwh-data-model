@@ -42,12 +42,13 @@ performance:
       ua: 
         value: 8.55 # kW/K
         units: "kJ_per_hC"
-      bottom_fraction_of_tank_mixing_on_draw: 0.333
+      bottom_fraction_of_tank_mixing_on_draw: 0.3333333333333333
       number_of_nodes: 12 
             
   heat_source_configurations: # heat source configurations #
   - heat_source_type: RESISTANCE
     label: "top resistor"
+    is_vip: True
     heat_source:     
       metadata:
         data_model: ASHRAE205
@@ -77,8 +78,8 @@ performance:
           units: "F"
         logic_distribution: [0, 0, 0, 0, 0, 1] # top sixth
       comparison_type: LESS_THAN
-    followed_by_heat_source_label: "compressor"
-    companion_heat_source_label: "compressor"                   
+    followed_by_heat_source_label: "condenser"
+    companion_heat_source_label: "condenser"                   
                                      
   - heat_source_type: RESISTANCE          
     label: "bottom resistor"
