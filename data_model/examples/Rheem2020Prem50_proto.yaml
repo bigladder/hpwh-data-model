@@ -48,6 +48,7 @@ performance:
   heat_source_configurations: # heat source configurations #
   - heat_source_type: RESISTANCE
     label: "top resistor"
+    is_vip: True
     heat_source:     
       metadata:
         data_model: ASHRAE205
