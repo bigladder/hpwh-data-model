@@ -170,7 +170,7 @@ performance:
         differential_temperature:
           value: 9
           units: "F"
-        logic_distribution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]      
+        heating_logic_type: STANDBY      
       comparison_type: LESS_THAN
     maximum_temperature:
       value: 120.0
