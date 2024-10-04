@@ -161,17 +161,16 @@ performance:
     - heating_logic_type: TEMP_BASED
       heating_logic:
         differential_temperature:
-          value: 30
+          value: 32
           units: "F"     
         logic_distribution: [1, 0, 0]
       comparison_type: LESS_THAN
-    standby_logic:
-      heating_logic_type: TEMP_BASED
+    - heating_logic_type: TEMP_BASED
       heating_logic:
         differential_temperature:
           value: 9
           units: "F"
-        logic_distribution: [1, 0, 0]      
+        logic_distribution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]      
       comparison_type: LESS_THAN
     maximum_temperature:
       value: 120.0
