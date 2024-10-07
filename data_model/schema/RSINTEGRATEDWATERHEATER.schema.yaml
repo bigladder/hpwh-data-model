@@ -177,20 +177,16 @@ HeatingLogicType:
       Display Text: "Temp based"
       Notes: ""
 
-TankSpecifiedTempLogicType:
+TankNodeSpecification:
   Object Type: "Enumeration"
   Enumerators:
-    TOP_TANK:
-      Description: "Refers to top tank node only."
+    TOP_NODE:
+      Description: "Refers to top tank node."
       Display Text: "Top tank node"
       Notes: ""
-    BOTTOM_TANK:
-      Description: "Refers to bottom tank node only."
+    BOTTOM_NODE:
+      Description: "Refers to bottom tank node."
       Display Text: "Bottom tank node"
-      Notes: ""
-    STANDBY:
-      Description: "Refers to top tank node only with standby condition."
-      Display Text: "Top tank node with standby condition"
       Notes: ""
                                            
 HeatingLogic:
@@ -241,15 +237,19 @@ TempBasedHeatingLogic:
       Data Type: Numeric
       Units: "K"
       Required: "if !absolute_temperature"
-    heating_logic_type:
-      Description: "Type of tank-specified heating logic"
-      Data Type: "{TankSpecifiedTempLogicType}"
+    tank_node_specification:
+      Description: "Tank-node specification"
+      Data Type: "{TankNodeSpecification}"
       Required: "if !logic_distribution"
     logic_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "[Numeric]"
       Required: "if !heating_logic_type"
-
+    activates_standby:
+      Description: "Applies standby logic."
+      Data Type: Boolean
+      Required: False
+      
 SoCBasedHeatingLogic:
   Object Type: "Data Group"
   Data Group Template: HeatingLogicBase

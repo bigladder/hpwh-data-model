@@ -170,7 +170,8 @@ performance:
         differential_temperature:
           value: 9
           units: "F"
-        heating_logic_type: STANDBY      
+        tank_node_specification: TOP_NODE
+        activates_standby: True      
       comparison_type: LESS_THAN
     maximum_temperature:
       value: 120.0
