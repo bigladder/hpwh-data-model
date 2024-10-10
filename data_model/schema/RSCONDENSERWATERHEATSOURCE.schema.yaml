@@ -46,10 +46,6 @@ ProductInformation:
 Performance:
   Object Type: "Data Group"
   Data Elements:
-    performance_points:
-      Description: "Collection of performance points"
-      Data Type: "[{PerformancePoint}]"
-      Required: "if !performance_map"  
     performance_map:
       Description: "Performance map"
       Data Type: "{PerformanceMap}"
@@ -67,23 +63,6 @@ Performance:
       Description: "Use defrost map"
       Data Type: Boolean
       Required: False
-                 
-PerformancePoint:
-  Object Type: "Data Group"
-  Data Elements:
-    heat_source_temperature:
-      Description: "Temperature of heat source"
-      Data Type: "Numeric"
-      Units: "K"
-      Required: True
-    input_power_coefficients:
-      Description: "Input-power polynomial expansion coefficients"
-      Data Type: "[Numeric]"
-      Required: True
-    cop_coefficients:
-      Description: "Coefficient-of-performance expansion coefficients"
-      Data Type: "[Numeric]"
-      Required: True
       
 PerformanceMap:
   Object Type: "Data Group"
