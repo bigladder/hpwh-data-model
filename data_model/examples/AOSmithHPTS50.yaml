@@ -17,7 +17,6 @@ description:
     model: Rheem2020Prem50
 
 performance:
-  number_of_nodes: 12
   tank:
     metadata:
       schema_version: 1.0.0
@@ -35,9 +34,11 @@ performance:
         model_number: XXXXXX
     performance:
       volume: 0.172614696
-      ua: 6.403
+      ua: 1.778611111
       bottom_fraction_of_tank_mixing_on_draw: 0.3333333333333333
-        
+      number_of_nodes: 12
+      volume_fixed: true
+          
   heat_source_configurations:
     - heat_source:
         metadata:
@@ -65,7 +66,6 @@ performance:
         hysteresis_temperature: 0
       maximum_temperature: 273.15
       minimum_temperature: 373.15
-      maximum_setpoint: 373.15
       
     - heat_source:
         metadata:
@@ -93,7 +93,6 @@ performance:
         hysteresis_temperature: 2.22
       maximum_temperature: 273.15
       minimum_temperature: 373.15
-      maximum_setpoint: 373.15
       
       - heat_source:
         metadata:
@@ -198,10 +197,20 @@ performance:
                 - 502.9600000000001
                 - 550.12
                 - 597.28
-                - 644.44
-          standby_power: 50       
-          coil_configuration: WRAPPED            
-      heat_distribution: [0.2, 0.2, 0.2, 0.2, 0.2, 0, 0, 0, 0, 0, 0, 0]
+                - 644.44                 
+      heat_distribution:
+        - 0
+        - 0.2
+        - 0.2
+        - 0.2
+        - 0.2
+        - 0.2
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
       turn_on_logic:
         - comparison_type: LESS_THAN
           heating_logic:

@@ -39,7 +39,7 @@ performance:
     performance:
       bottom_fraction_of_tank_mixing_on_draw: 0.3333333333333333
       number_of_nodes: 12
-      ua: 8.55
+      ua: 2.375
       volume: 0.170721991
       volume_fixed: true
        
