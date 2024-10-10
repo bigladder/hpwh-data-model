@@ -62,7 +62,10 @@ Performance:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
-      
+    fixed_setpoint:
+      Data Type: "Boolean"
+      Required: False
+
 HeatSourceType:
   Object Type: "Enumeration"
   Enumerators:
