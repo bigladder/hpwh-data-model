@@ -46,10 +46,6 @@ ProductInformation:
 Performance:
   Object Type: "Data Group"
   Data Elements:
-    performance_points:
-      Description: "Collection of performance points"
-      Data Type: "[{PerformancePoint}]"
-      Required: "if !performance_map"
     performance_map:
       Description: "Performance map"
       Data Type: "{PerformanceMap}"

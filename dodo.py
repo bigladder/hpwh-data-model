@@ -26,6 +26,6 @@ def task_generate_cpp_code():
         + [schema.meta_schema_path for schema in data_model.schemas],
         "targets": [schema.cpp_header_path for schema in data_model.cpp_schemas]
         + [schema.cpp_source_path for schema in data_model.cpp_schemas],
-        "actions": [(data_model.generate_cpp_headers, [])],
+        "actions": [(data_model.generate_cpp_project, [[]])],
         "clean": True,
     }
