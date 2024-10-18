@@ -21,7 +21,7 @@ RSTANK:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
@@ -41,7 +41,7 @@ ProductInformation:
       Data Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
-            
+
 Performance:
   Object Type: "Data Group"
   Data Elements:
@@ -76,7 +76,7 @@ Performance:
       Description: "Number of nodes used for simulation"
       Data Type: "Integer"
       Constrains: "> 0"
-    heat_exchanger_effectiveness:  
+    heat_exchanger_effectiveness:
       Description: "Effectiveness for heat exchange"
       Data Type: "Numeric"
       Required: False

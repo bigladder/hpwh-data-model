@@ -22,14 +22,14 @@ RSRESISTANCEWATERHEATSOURCE:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-      
+
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:

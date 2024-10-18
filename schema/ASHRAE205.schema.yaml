@@ -29,7 +29,7 @@ HeatSourceBase:
 
 HeatingLogicBase:
   Object Type: "Data Group Template"
-  
+
 # Common Enumerations
 
 SchemaType:

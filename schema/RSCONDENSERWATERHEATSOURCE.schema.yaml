@@ -22,14 +22,14 @@ RSCONDENSERWATERHEATSOURCE:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-      
+
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
@@ -49,16 +49,16 @@ Performance:
     performance_points:
       Description: "Collection of performance points"
       Data Type: "[{PerformancePoint}]"
-      Required: "if !performance_map"  
+      Required: "if !performance_map"
     performance_map:
       Description: "Performance map"
       Data Type: "{PerformanceMap}"
-      Required: "if !performance_points"  
+      Required: "if !performance_points"
     standby_power:
       Description: ""
       Data Type: Numeric
       Units: "W"
-      Constraints: ">=0.0"       
+      Constraints: ">=0.0"
     coil_configuration:
       Description: "Coil configuration"
       Data Type: "{CoilConfiguration}"
@@ -67,7 +67,7 @@ Performance:
       Description: "Use defrost map"
       Data Type: Boolean
       Required: False
-     
+
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
@@ -93,7 +93,7 @@ GridVariables:
       Data Type: "[Numeric]"
       Units: "K"
       Required: True
-      
+
 LookupVariables:
   Object Type: "Data Group"
   Data Elements:
@@ -116,7 +116,7 @@ CoilConfiguration:
       Display Text: "Submerged"
     WRAPPED:
       Description: "Coil is wrapped around the tank interior"
-      Display Text: "Wrapped"       
+      Display Text: "Wrapped"
     EXTERNAL:
       Description: "Coil is external to the tank"
       Display Text: "External"

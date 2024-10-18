@@ -28,14 +28,14 @@ RSINTEGRATEDWATERHEATER:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-      
+
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
@@ -62,7 +62,7 @@ Performance:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
-      
+
 HeatSourceType:
   Object Type: "Enumeration"
   Enumerators:
@@ -82,7 +82,7 @@ HeatSourceConfiguration:
       Description: "Type of heat source"
       Data Type: "{HeatSourceType}"
       Required: True
-      Notes: "Determines which heat source data group is used for `heat_source`"    
+      Notes: "Determines which heat source data group is used for `heat_source`"
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
@@ -91,15 +91,15 @@ HeatSourceConfiguration:
     label:
       Description: "Identifier for reference"
       Data Type: "String"
-      Required: True  
+      Required: True
     heat_distribution:
       Description: "Weighted distribution of heat by division, in order"
       Data Type: "[Numeric]"
-      Required: True    
+      Required: True
     turn_on_logic:
       Description: ""
       Data Type: "[{HeatingLogic}]"
-      Required: True    
+      Required: True
     shut_off_logic:
       Description: ""
       Data Type: "[{HeatingLogic}]"
@@ -136,19 +136,19 @@ HeatSourceConfiguration:
       Description: "Depresses space temperature when activated"
       Data Type: Boolean
       Required: False
-    backup_heat_source_label: 
+    backup_heat_source_label:
       Description: "Identifier of backup heat source"
       Data Type: "String"
       Required: False
-    followed_by_heat_source_label: 
+    followed_by_heat_source_label:
       Description: "Identifier of heat source that follows"
       Data Type: "String"
       Required: False
-    companion_heat_source_label: 
+    companion_heat_source_label:
       Description: "Identifier of companion heat source"
       Data Type: "String"
       Required: False
-                                
+
 HeatSourceCoilConfiguration:
   Object Type: "Enumeration"
   Enumerators:
@@ -164,7 +164,7 @@ HeatSourceCoilConfiguration:
       Description: "Heat sources with external coil configuration"
       Display Text: "External"
       Notes: ""
-       
+
 HeatingLogicType:
   Object Type: "Enumeration"
   Enumerators:
@@ -176,25 +176,25 @@ HeatingLogicType:
       Description: "Temperature based"
       Display Text: "Temp based"
       Notes: ""
-                          
+
 HeatingLogic:
   Object Type: "Data Group"
-  Data Elements:        
+  Data Elements:
     heating_logic_type:
       Description: "Type of heating logic"
       Data Type: "{HeatingLogicType}"
       Required: True
-      Notes: "Determines which heating-logic data group is used for `heating_logic`"  
+      Notes: "Determines which heating-logic data group is used for `heating_logic`"
     heating_logic:
       Description: "Specific heating logic"
       Data Type: "({SoCBasedHeatingLogic},{TempBasedHeatingLogic})"
       Constraints: "heating_logic_type(SOC_BASED, TEMP_BASED)"
-      Required: True  
+      Required: True
     comparison_type:
       Description: "Result of comparison for activation"
-      Data Type: "<ComparisonType>" 
-      Required: True          
-      
+      Data Type: "<ComparisonType>"
+      Required: True
+
 ComparisonType:
   Object Type: "Enumeration"
   Enumerators:
@@ -208,7 +208,7 @@ ComparisonType:
 TempBasedHeatingLogic:
   Object Type: "Data Group"
   Data Group Template: HeatingLogicBase
-  Data Elements:        
+  Data Elements:
     absolute_temperature:
       Constraints: ">=0.0"
       Data Type: Numeric
@@ -224,22 +224,22 @@ TempBasedHeatingLogic:
     logic_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "[Numeric]"
-      Required: True 
+      Required: True
 
 SoCBasedHeatingLogic:
   Object Type: "Data Group"
   Data Group Template: HeatingLogicBase
-  Data Elements: 
+  Data Elements:
     decision_point:
       Description: "Decision point"
       Constraints: ">=0.0"
       Data Type: Numeric
-      Required: True        
+      Required: True
     minimum_useful_temperature:
       Description: "Minimum useful temperature"
       Data Type: Numeric
       Required: False
-      Notes: "Determines which heating-logic data group is used for `heating_logic`"  
+      Notes: "Determines which heating-logic data group is used for `heating_logic`"
     hysteresis_fraction:
       Description: "Hysteresis fraction"
       Data Type: Numeric
