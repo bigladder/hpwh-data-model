@@ -24,11 +24,25 @@ RepresentationSpecificationTemplate:
     description:
       Required: False
 
-HeatSourceBase:
+HeatSourceTemplate:
   Object Type: "Data Group Template"
+  Required Data Elements:
+    metadata:
+      Required: True
+    performance:
+      Required: True
+    description:
+      Required: False
 
-HeatingLogicBase:
+HeatingLogicTemplate:
   Object Type: "Data Group Template"
+  Required Data Elements:
+    metadata:
+      Required: True
+    performance:
+      Required: True
+    description:
+      Required: False
 
 # Common Enumerations
 

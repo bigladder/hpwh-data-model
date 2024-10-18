@@ -47,38 +47,31 @@ Performance:
   Data Elements:
     volume:
       Data Type: "Numeric"
-      Units: "m" # should be m3
+      Units: "m3"
       Range: ">= 0"
       Required: True
     diameter:
       Data Type: "Numeric"
       Units: "m"
       Range: ">= 0"
-      Required: False
     ua:
       Data Type: "Numeric"
-      Units: "W" # should be W/K
+      Units: "W/K"
       Required: True
     fittings_ua:
       Data Type: "Numeric"
-      Units: "W" # should be W/K
-      Required: False
+      Units: "W/K"
     bottom_fraction_of_tank_mixing_on_draw:
       Description: "Bottom fraction of the tank that should mix during draws"
       Data Type: "Numeric"
       Units: "-"
       Range: ">= 0, <= 1"
-      Required: False
-    fixed_volume:
-      Data Type: "Boolean"
-      Required: False
-    number_of_nodes:
+    number_of_nodes: # TODO: Move to HPWHsimInput
       Description: "Number of nodes used for simulation"
       Data Type: "Integer"
       Constrains: "> 0"
-    heat_exchanger_effectiveness:
+    heat_exchanger_effectiveness: # TODO: Move to separate RS
       Description: "Effectiveness for heat exchange"
       Data Type: "Numeric"
-      Required: False
 
 

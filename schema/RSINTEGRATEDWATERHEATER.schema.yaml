@@ -24,10 +24,6 @@ RSINTEGRATEDWATERHEATER:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-    standby_power:
-      Description: "Power drawn when system is in standby mode"
-      Data Type: "Numeric"
-      Constrains: "> 0"
 
 Description:
   Object Type: "Data Group"
@@ -78,6 +74,10 @@ HeatSourceType:
 HeatSourceConfiguration:
   Object Type: "Data Group"
   Data Elements:
+    id:
+      Description: "Identifier for reference"
+      Data Type: "String"
+      Required: True
     heat_source_type:
       Description: "Type of heat source"
       Data Type: "{HeatSourceType}"
@@ -88,94 +88,64 @@ HeatSourceConfiguration:
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
       Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
       Required: True
-    label:
-      Description: "Identifier for reference"
-      Data Type: "String"
-      Required: True
     heat_distribution:
-      Description: "Weighted distribution of heat by division, in order"
-      Data Type: "[Numeric]"
+      Description: "Weighted distribution of heat from the heat source along the height of the tank"
+      Data Type: "{WeightedDistribution}"
       Required: True
     turn_on_logic:
-      Description: ""
+      Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
       Data Type: "[{HeatingLogic}]"
       Required: True
     shut_off_logic:
-      Description: ""
+      Description: "An array of logic conditions that define when the heat source shuts off if it is currently on"
       Data Type: "[{HeatingLogic}]"
-      Required: False
-    standby_logic:
+    standby_logic: # TODO: Is this needed?
       Description: "Checks that bottom is below a temperature to prevent short cycling"
       Data Type: "{HeatingLogic}"
       Required: False
-    maximum_setpoint:
-      Description: "Maximum setpoint temperature"
-      Data Type: Numeric
-      Units: "K"
-      Required: False
-    maximum_temperature:
-      Description: "Maximum external temperature"
-      Data Type: Numeric
-      Units: "K"
-      Required: False
-    minimum_temperature:
-      Description: "Minimum external temperature"
-      Data Type: Numeric
-      Units: "K"
-      Required: False
-    hysteresis_temperature_difference:
-      Description: "Hysteresis temperature difference for activation"
-      Data Type: Numeric
-      Units: "K"
-      Required: False
-    is_vip:
+    is_vip: # TODO: We need to come up with a better name. Since there can only be one "VIP", we should maybe just reference it at the Performance data group
       Description: "Turns on independently of other heat sources"
       Data Type: Boolean
-      Required: False
-    depresses_temperature:
+    depresses_temperature: # TODO: Move to HPWHsimInput schema
       Description: "Depresses space temperature when activated"
       Data Type: Boolean
-      Required: False
-    backup_heat_source_label:
-      Description: "Identifier of backup heat source"
-      Data Type: "String"
-      Required: False
-    followed_by_heat_source_label:
-      Description: "Identifier of heat source that follows"
-      Data Type: "String"
-      Required: False
-    companion_heat_source_label:
-      Description: "Identifier of companion heat source"
-      Data Type: "String"
-      Required: False
+    backup_heat_source:
+      Description: "Reference to the `HeatSourceConfiguration` that engages if this one cannot meet the setpoint"
+      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+    followed_by_heat_source:
+      Description: "Reference to the `HeatSourceConfiguration` that should always engage after this one"
+      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+    companion_heat_source:
+      Description: "Reference to the `HeatSourceConfiguration` that should always engage concurrently with this one"
+      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
 
-HeatSourceCoilConfiguration:
-  Object Type: "Enumeration"
-  Enumerators:
-    SUBMERGED:
-      Description: "Heat sources with submerged coil configuration"
-      Display Text: "Submerged"
-      Notes: ""
-    WRAPPED:
-      Description: "Heat sources with wrapped coil configuration"
-      Display Text: "Wrapped"
-      Notes: ""
-    EXTERNAL:
-      Description: "Heat sources with external coil configuration"
-      Display Text: "External"
-      Notes: ""
+WeightedDistribution:
+  Object Type: "Data Group"
+  Data Elements:
+    normalized_height:
+      Description: "Normalized heights within the tank where the weight is defined between the bottom (0.0), and the top (1.0)"
+      Data Type: "[Numeric]"
+      Units: "-"
+      Constraints:
+        - ">= 0.0"
+        - "<= 1.0"
+      Required: True
+    weight:
+      Description: "Fraction of weight at the corresponding normalized height"
+      Data Type: "[Numeric]"
+      Units: "-"
+      Constraints:
+        - ">= 0.0"
+        - "<= 1.0"
+      Required: True
 
 HeatingLogicType:
   Object Type: "Enumeration"
   Enumerators:
-    SOC_BASED:
+    STATE_OF_CHARGE_BASED:
       Description: "State-of-charge based"
-      Display Text: "SoC based"
-      Notes: ""
-    TEMP_BASED:
+    TEMPERATURE_BASED:
       Description: "Temperature based"
-      Display Text: "Temp based"
-      Notes: ""
 
 HeatingLogic:
   Object Type: "Data Group"
@@ -187,8 +157,8 @@ HeatingLogic:
       Notes: "Determines which heating-logic data group is used for `heating_logic`"
     heating_logic:
       Description: "Specific heating logic"
-      Data Type: "({SoCBasedHeatingLogic},{TempBasedHeatingLogic})"
-      Constraints: "heating_logic_type(SOC_BASED, TEMP_BASED)"
+      Data Type: "({StateOfChargeBasedHeatingLogic},{TemperatureBasedHeatingLogic})"
+      Constraints: "heating_logic_type(STATE_OF_CHARGE_BASED, TEMPERATURE_BASED)"
       Required: True
     comparison_type:
       Description: "Result of comparison for activation"
@@ -205,30 +175,30 @@ ComparisonType:
       Description: "Decision value is less than reference value"
       Display Text: "Less than"
 
-TempBasedHeatingLogic:
+TemperatureBasedHeatingLogic:
   Object Type: "Data Group"
-  Data Group Template: HeatingLogicBase
+  Data Group Template: HeatingLogicTemplate
   Data Elements:
     absolute_temperature:
-      Constraints: ">=0.0"
-      Data Type: Numeric
       Description: "Absolute temperature for activation"
+      Data Type: Numeric
       Units: "K"
+      Constraints: ">=0.0"
       Required: "if !differential_temperature"
     differential_temperature:
       Description: "Temperature difference for activation"
-      Constraints: ">=0.0"
       Data Type: Numeric
       Units: "K"
+      Constraints: ">=0.0"
       Required: "if !absolute_temperature"
-    logic_distribution:
+    temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
-      Data Type: "[Numeric]"
+      Data Type: "{WeightedDistribution}"
       Required: True
 
-SoCBasedHeatingLogic:
+StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
-  Data Group Template: HeatingLogicBase
+  Data Group Template: HeatingLogicTemplate
   Data Elements:
     decision_point:
       Description: "Decision point"
@@ -238,14 +208,13 @@ SoCBasedHeatingLogic:
     minimum_useful_temperature:
       Description: "Minimum useful temperature"
       Data Type: Numeric
-      Required: False
-      Notes: "Determines which heating-logic data group is used for `heating_logic`"
     hysteresis_fraction:
       Description: "Hysteresis fraction"
       Data Type: Numeric
       Units: "-"
-      Range: ">= 0, <= 1"
-      Required: False
+      Constraints:
+        - ">= 0.0"
+        - "<= 1.0"
     uses_constant_mains:
       Description: "Uses constant mains"
       Data Type: Boolean
