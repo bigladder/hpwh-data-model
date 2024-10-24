@@ -1,7 +1,7 @@
 Schema:
   Object Type: "Meta"
   References:
-
+    - "ASHRAE205"
     - "RSINTEGRATEDWATERHEATER"
     # - "RSTANK" # TODO: Add for central water heaters
     # - "RSAIRTOWATERHEATPUMP" # TODO: Add for central water heaters

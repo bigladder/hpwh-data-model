@@ -112,13 +112,13 @@ HeatSourceConfiguration:
     depresses_temperature: # TODO: Move to HPWHsimInput schema
       Description: "Depresses space temperature when activated"
       Data Type: Boolean
-    backup_heat_source:
+    backup_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that engages if this one cannot meet the setpoint"
       Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
-    followed_by_heat_source:
+    followed_by_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that should always engage after this one"
       Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
-    companion_heat_source:
+    companion_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that should always engage concurrently with this one"
       Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
 
