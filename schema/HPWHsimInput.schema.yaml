@@ -1,6 +1,7 @@
 Schema:
   Object Type: "Meta"
   References:
+
     - "RSINTEGRATEDWATERHEATER"
     # - "RSTANK" # TODO: Add for central water heaters
     # - "RSAIRTOWATERHEATPUMP" # TODO: Add for central water heaters

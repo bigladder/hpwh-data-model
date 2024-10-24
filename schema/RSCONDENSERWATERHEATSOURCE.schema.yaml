@@ -80,7 +80,6 @@ Performance:
       Required: False
       Notes:
         - "Compressor locks out when the evaporator environment temperature drops this much below the minimum operating temperature, and unlocks when the temperature rises this much above the minimum operating temperature"
-        - "Compressor locks out when the evaporator environment temperature rises this much above the maximum operating temperature, and unlocks when the temperature drops this much below the maximum operating temperature"
     use_defrost_map:  # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
       Data Type: Boolean
