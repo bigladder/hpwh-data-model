@@ -90,7 +90,7 @@ HeatSourceConfiguration:
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
-      Data Type: "{WeightedDistribution}"
+      Data Type: "[Numeric]" #"{WeightedDistribution}"
       Required: True
     turn_on_logic:
       Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
@@ -193,7 +193,7 @@ TemperatureBasedHeatingLogic:
       Required: "if !absolute_temperature"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
-      Data Type: "{WeightedDistribution}"
+      Data Type: "[Numeric]" #"{WeightedDistribution}"
       Required: True
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer

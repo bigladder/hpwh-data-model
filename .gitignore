@@ -4,3 +4,6 @@
 .vscode/
 __pycache__/
 .lattice/
+cpp/
+json_schema/
+meta_schema/

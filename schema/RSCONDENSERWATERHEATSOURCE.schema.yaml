@@ -125,7 +125,7 @@ LookupVariables:
     heating_capacity:
       Description: "Total heat added by the condenser to the adjacent water"
       Data Type: "[Numeric]"
-      Units: "-"
+      Units: "W"
       Required: True
 
 CoilConfiguration:
