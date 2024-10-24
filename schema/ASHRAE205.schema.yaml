@@ -71,6 +71,8 @@ SchemaType:
       Description: "Resistance Water Heat Source"
     RSCONDENSERWATERHEATSOURCE:
       Description: "Condenser Water Heat Source"
+    HPWHSIMINPUT:  
+       Description: "Input required to describe a heat pump water heating system in HPWHsim"
 
 CompressorType:
   Object Type: "Enumeration"
