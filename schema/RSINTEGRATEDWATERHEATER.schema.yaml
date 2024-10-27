@@ -54,6 +54,9 @@ Performance:
       Required: True
     heat_source_configurations:
       Data Type: "[{HeatSourceConfiguration}]"
+    primary_heat_source_id:
+      Description: "Turns on independently of other heat sources"
+      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
     standby_power:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
@@ -106,9 +109,6 @@ HeatSourceConfiguration:
       Description: "Checks that bottom is below a temperature to prevent short cycling"
       Data Type: "{HeatingLogic}"
       Required: False
-    is_vip: # TODO: We need to come up with a better name. Since there can only be one "VIP", we should maybe just reference it at the Performance data group
-      Description: "Turns on independently of other heat sources"
-      Data Type: Boolean
     depresses_temperature: # TODO: Move to HPWHsimInput schema
       Description: "Depresses space temperature when activated"
       Data Type: Boolean
