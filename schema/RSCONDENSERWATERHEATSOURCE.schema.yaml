@@ -49,7 +49,7 @@ Performance:
     performance_map:
       Description: "Performance map"
       Data Type: "{PerformanceMap}"
-      Required: "if !performance_points"
+      Required: True
     standby_power:
       Description: ""
       Data Type: Numeric

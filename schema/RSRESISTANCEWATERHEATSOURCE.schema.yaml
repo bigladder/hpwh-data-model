@@ -51,10 +51,3 @@ Performance:
       Data Type: "Numeric"
       Units: "W"
       Required: True
-    resistance_lockout_temperature_hysteresis: # Was hysteresis_temperature_difference in HeatSourceConfiguration
-      Description: "Hysteresis for resistance lockout"
-      Data Type: Numeric
-      Units: "K"
-      Required: False
-      Notes:
-        - "Resistance hysteresis for lockout"

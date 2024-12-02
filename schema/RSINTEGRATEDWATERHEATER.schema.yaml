@@ -61,9 +61,6 @@ Performance:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
-    fixed_setpoint:
-      Data Type: "Boolean"
-      Required: False
 
 HeatSourceType:
   Object Type: "Enumeration"
@@ -150,16 +147,16 @@ HeatingLogicType:
     TEMPERATURE_BASED:
       Description: "Temperature based"
 
-TankNodeSpecification:
+StandbyTemperatureLocation:
   Object Type: "Enumeration"
   Enumerators:
-    TOP_NODE:
-      Description: "Refers to top tank node."
-      Display Text: "Top tank node"
+    TOP_OF_TANK:
+      Description: "Refers to top of tank."
+      Display Text: "Top of tank"
       Notes: ""
-    BOTTOM_NODE:
-      Description: "Refers to bottom tank node."
-      Display Text: "Bottom tank node"
+    BOTTOM_OF_TANK:
+      Description: "Refers to bottom of tank."
+      Display Text: "Bottom of tank"
       Notes: ""
       
 HeatingLogic:
@@ -206,9 +203,9 @@ TemperatureBasedHeatingLogic:
       Units: "K"
       Constraints: ">=0.0"
       Required: "if !absolute_temperature"
-    tank_node_specification:
-      Description: "Tank-node specification"
-      Data Type: "{TankNodeSpecification}"
+    standby_temperature_location:
+      Description: "Standby temperature location"
+      Data Type: "{StandbyTemperatureLocation}"
       Required: "if !logic_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
