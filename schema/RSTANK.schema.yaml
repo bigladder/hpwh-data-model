@@ -5,6 +5,7 @@ Schema:
   Title: "Water Tank"
   Description: "Schema for ASHRAE 205 annex RSTANK: Water tank"
   Version: "0.1.0"
+  Root Data Group: RSTANK
 
 RSTANK:
   Object Type: "Data Group"
@@ -66,13 +67,6 @@ Performance:
       Data Type: "Numeric"
       Units: "-"
       Range: ">= 0, <= 1"
-    fixed_volume:
-      Data Type: "Boolean"
-      Required: False
-    number_of_nodes: # TODO: Move to HPWHsimInput
-      Description: "Number of nodes used for simulation"
-      Data Type: "Integer"
-      Constrains: "> 0"
     heat_exchanger_effectiveness: # TODO: Move to separate RS
       Description: "Effectiveness for heat exchange"
       Data Type: "Numeric"

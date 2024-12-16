@@ -5,6 +5,8 @@ Schema:
   Title: "Condenser Water Heat Source"
   Description: "Schema for ASHRAE 205 annex RSCONDENSERWATERHEATSOURCE: Condenser heat source"
   Version: "0.1.0"
+  Root Data Group: RSCONDENSERWATERHEATSOURCE
+
 
 RSCONDENSERWATERHEATSOURCE:
   Object Type: "Data Group"
@@ -59,21 +61,21 @@ Performance:
       Description: "Coil configuration"
       Data Type: "{CoilConfiguration}"
       Required: True
-    maximum_refrigerant_temperature:  # Was maximum_setpoint in HeatSourceConfiguration
+    maximum_refrigerant_temperature:
       Description: "Maximum temperature of the refrigerant entering the condenser"
       Data Type: Numeric
       Units: "K"
-    maximum_temperature: # Was maximum_temperature in HeatSourceConfiguration. # TODO: Remove and use performance map maximum grid temperature
+    maximum_temperature: # TODO: Remove and use performance map maximum grid temperature
       Description: "Maximum external temperature"
       Data Type: Numeric
       Units: "K"
       Required: False
-    minimum_temperature: # Was minimum_temperature in HeatSourceConfiguration. # TODO: Remove and use performance map minimum grid temperature
+    minimum_temperature: # TODO: Remove and use performance map minimum grid temperature
       Description: "Minimum external temperature"
       Data Type: Numeric
       Units: "K"
       Required: False
-    compressor_lockout_temperature_hysteresis: # Was hysteresis_temperature_difference in HeatSourceConfiguration
+    compressor_lockout_temperature_hysteresis:
       Description: "Hysteresis for compressor lockout"
       Data Type: Numeric
       Units: "K"
