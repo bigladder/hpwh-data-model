@@ -19,122 +19,211 @@ description:
     model_number: XXXXXX
 
 performance:
+  heat_source_configurations:
+  - companion_heat_source_id: compressor
+    followed_by_heat_source_id: compressor
+    heat_distribution:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 0
+    - 0
+    - 0
+    heat_source:
+      metadata:
+        schema: RSRESISTANCEWATERHEATSOURCE
+      performance:
+        input_power: 4500
+    heat_source_type: RESISTANCE
+    id: resistiveElementTop
+    turn_on_logic:
+    - comparison_type: LESS_THAN
+      heating_logic:
+        differential_temperature: 11.34261111111111
+        temperature_weight_distribution:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 1
+      heating_logic_type: TEMPERATURE_BASED
+  - backup_heat_source_id: compressor
+    followed_by_heat_source_id: compressor
+    heat_distribution:
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    heat_source:
+      metadata:
+        schema: RSRESISTANCEWATERHEATSOURCE
+      performance:
+        input_power: 4500
+    heat_source_type: RESISTANCE
+    id: resistiveElementBottom
+    shut_off_logic:
+    - comparison_type: GREATER_THAN
+      heating_logic:
+        absolute_temperature: 310.92777777777775
+        temperature_weight_distribution:
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      heating_logic_type: TEMPERATURE_BASED
+  - backup_heat_source_id: resistiveElementBottom
+    heat_distribution:
+    - 0.2
+    - 0.2
+    - 0.2
+    - 0.2
+    - 0.2
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    heat_source:
+      metadata:
+        schema: RSCONDENSERWATERHEATSOURCE
+      performance:
+        coil_configuration: WRAPPED
+        compressor_lockout_temperature_hysteresis: 0.5555555555555556
+        maximum_refrigerant_temperature: 344.26111111111106
+        maximum_temperature: 322.0388888888889
+        minimum_temperature: 275.92777777777775
+        performance_map:
+          grid_variables:
+            evaporator_environment_dry_bulb_temperature:
+            - 275.92777777777775
+            - 283.15
+            - 292.59444444444443
+            - 322.0388888888889
+            heat_source_temperature:
+            - 273.15
+            - 283.30873015873016
+            - 293.46746031746034
+            - 303.6261904761905
+            - 313.7849206349207
+            - 323.9436507936509
+            - 334.10238095238105
+            - 344.26111111111123
+          lookup_variables:
+            heating_capacity:
+            - 1252.9372831623527
+            - 1174.0611286362803
+            - 1117.2854648238892
+            - 1049.2775695916766
+            - 922.5762362674727
+            - 675.5917736404369
+            - 232.6060059610598
+            - -496.2277270588364
+            - 1449.73786624
+            - 1380.3520964056972
+            - 1332.7285613394417
+            - 1278.5386767780087
+            - 1180.0088658205736
+            - 989.9205589287104
+            - 651.6101939263917
+            - 98.96921599999072
+            - 1716.3594624000002
+            - 1660.8029642055549
+            - 1631.6197696026657
+            - 1607.8603520471274
+            - 1564.3598203828938
+            - 1471.7379188420819
+            - 1296.3990270449694
+            - 1000.5321599999966
+            - 2615.0042890541176
+            - 2612.883424868158
+            - 2688.272582890785
+            - 2849.3030965117287
+            - 3109.684831458272
+            - 3488.7061857953026
+            - 4011.234089925281
+            - 4707.714006588249
+            input_power:
+            - 205.15423999999993
+            - 207.96480345738289
+            - 223.5116158463386
+            - 251.794677166867
+            - 292.81398741896794
+            - 346.56954660264165
+            - 413.061354717888
+            - 492.28941176470704
+            - 233.1968
+            - 239.77835102040817
+            - 258.1296326530613
+            - 288.25064489795943
+            - 330.1413877551024
+            - 383.8018612244904
+            - 449.23206530612333
+            - 526.4320000000012
+            - 269.86784000000006
+            - 281.3806824489797
+            - 303.39934693877564
+            - 335.92383346938806
+            - 378.95414204081675
+            - 432.4902726530618
+            - 496.5322253061234
+            - 571.0800000000012
+            - 384.1952000000001
+            - 411.08206866746735
+            - 444.53433853541424
+            - 484.5520096038419
+            - 531.1350818727495
+            - 584.2835553421373
+            - 643.9974300120058
+            - 710.2767058823539
+    heat_source_type: CONDENSER
+    id: compressor
+    turn_on_logic:
+    - comparison_type: LESS_THAN
+      heating_logic:
+        differential_temperature: 17.77777777777778
+        temperature_weight_distribution:
+        - 1
+        - 0
+        - 0
+      heating_logic_type: TEMPERATURE_BASED
+    - comparison_type: LESS_THAN
+      heating_logic:
+        differential_temperature: 5
+        standby_temperature_location: TOP_OF_TANK
+      heating_logic_type: TEMPERATURE_BASED
+  primary_heat_source_id: resistiveElementTop
   tank:
     metadata:
-      schema_version: 1.0.0
-      data_model: ASHRAE205
-      schema: RS_TANK
-      schema_author: "Wolfgang"
-      description: Generic tank
-      id: XXXX-XXXX-XXXXX
-      data_timestamp: 2020-05-07T00:00Z
-      data_version: 1
-      disclaimer: Example data not to be used for simulation
-      notes: An example representation of a tank
-    description:
-      product_information:
-        manufacturer: Generic
-        model_number: XXXXXX
+      schema: RSTANK
     performance:
-      volume: 0.1707 # m3
-      ua: 0.003008333 # kW/K
-      bottom_fraction_of_tank_mixing_on_draw: 0.333
+      bottom_fraction_of_tank_mixing_on_draw: 0.3333333333333333
+      fittings_ua: 0
+      fixed_volume: true
       number_of_nodes: 12
-       
-  heat_source_configurations:
-    - heat_source_type: RESISTANCE     
-      metadata:
-        data_model: ASHRAE205
-        schema: RSRESISTANCEWATERHEATSOURCE
-        schema_version: 1.0.0
-        schema_author: "JoJo"
-        description: Thermistor
-        id: XXXX-XXXX-XXXXX
-        data_timestamp: 2020-05-07T00:00Z
-        data_version: 1
-        disclaimer: Example data not to be used for simulation
-        notes: An example representation of a resistive heat source
-      description:
-        product_information:
-          manufacturer: Generic
-          model_number: XXXXXX
-      performance:
-        input_power: 4500 # W            
-      heat_distribution: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
-      turn_on_logic:
-        - differential_temperature: 2
-          logic_distribution: [0, 0, 0, 0, 0, 1] # top sixth
-          evaluation_criterion: MAXIMUM
-          comparison_type: LESS_THAN
-          hysteresis_temperature: 0
-      maximum_setpoint: 373.15
-            
-    - heat_source_type: CONDENSER   
-      metadata:
-        data_model: ASHRAE205
-        schema: RSCONDENSERWATERHEATSOURCE
-        schema_version: 1.0.0
-        schema_author: "Olivia"
-        description: Condenser coil
-        id: XXXX-XXXX-XXXXX
-        data_timestamp: 2020-05-07T00:00Z
-        data_version: 1
-        disclaimer: Example data not to be used for simulation
-        notes: An example representation of a condenser heat source
-      description:
-        product_information:
-          manufacturer: Generic
-          model_number: XXXXXX
-      performance:
-        performance_map: # test values
-          grid_variables:
-            evaporator_environment_temperature: [293.15, 313.25]
-            heat_source_temperature: [293.15, 313.25]
-          lookup_variables: 
-            input_power: [200, 300, 300, 400]
-            cop: [0.3, 0.4, 0.4, 0.5]
-        standby_power: 50       
-        coil_configuration: WRAPPED         
-      heat_distribution: [0.2, 0.2, 0.2, 0.2, 0.2, 0, 0, 0, 0, 0, 0, 0]
-      turn_on_logic:
-          - differential_temperature: 17.78      
-            logic_distribution: [1, 0, 0]
-            evaluation_criterion: WEIGHTED_AVERAGE
-            comparison_type: LESS_THAN
-            temperature_hysteresis: 0.556
-      standby_logic:
-          - differential_temperature: 5
-            logic_distribution: [1, 0, 0]      
-            evaluation_criterion: WEIGHTED_AVERAGE
-            comparison_type: LESS_THAN
-            hysteresis_temperature: 0.556
-      maximum_temperature: 275.93
-      minimum_temperature: 322.04
-      maximum_setpoint: 344.26
-                                    
-    - heat_source_type: RESISTANCE          
-      metadata:
-        data_model: ASHRAE205
-        schema: RSRESISTANCEWATERHEATSOURCE
-        schema_version: 1.0.0
-        schema_author: "Salome"
-        description: Thermistor
-        id: XXXX-XXXX-XXXXX
-        data_timestamp: 2020-05-07T00:00Z
-        data_version: 1
-        disclaimer: Example data not to be used for simulation
-        notes: An example representation of a resistive heat source
-      description:
-        product_information:
-          manufacturer: Generic
-          model_number: XXXXXX
-      performance:
-        input_power: 4500 
-      heat_distribution: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      turn_on_logic:
-        - differential_temperature: 55.56  
-          logic_distribution: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-          evaluation_criterion: MAXIMUM
-          comparison_type: LESS_THAN
-          hysteresis_temperature: 2.22
-      maximum_setpoint: 373.15
+      ua: 2.375
+      volume: 0.170721991
