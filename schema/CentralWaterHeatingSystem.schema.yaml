@@ -26,3 +26,16 @@ CentralWaterHeatingSystem:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constrains: "> 0"
+    external_inlet_height:
+      Description: "Fractional tank height of inlet"
+      Data Type: "Numeric"
+      Constrains: "> 0"   
+    external_outlet_height:
+      Description: "Fractional tank height of outlet"
+      Data Type: "Numeric"
+      Constrains: "> 0"
+    multipass_flow_rate:
+      Description: "Flow rate, if multipass system"
+      Data Type: "Numeric"
+      Constrains: "> 0"
+      Required: False 
