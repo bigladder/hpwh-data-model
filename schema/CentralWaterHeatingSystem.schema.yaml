@@ -38,4 +38,8 @@ CentralWaterHeatingSystem:
       Description: "Flow rate, if multipass system"
       Data Type: "Numeric"
       Constrains: "> 0"
-      Required: False 
+      Required: False
+    standard_setpoint:
+      Description: "Standard setpoint"
+      Data Type: "Numeric"
+      Required: False
