@@ -39,7 +39,4 @@ CentralWaterHeatingSystem:
       Data Type: "Numeric"
       Constrains: "> 0"
       Required: False
-    standard_setpoint:
-      Description: "Standard setpoint"
-      Data Type: "Numeric"
-      Required: False
+
