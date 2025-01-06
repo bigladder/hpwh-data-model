@@ -85,6 +85,10 @@ Performance:
     use_defrost_map:  # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
       Data Type: Boolean
+    secondary_heat_exchanger:
+      Description: "Secondary heat exchanger"
+      Data Type: "SecondaryHeatExchanger"
+      Required: False
 
 PerformanceMap:
   Object Type: "Data Group"
@@ -146,3 +150,20 @@ CoilConfiguration:
     EXTERNAL:  # TODO: Remove after we have the air-to-water heat pump RS
       Description: "Coil is external to the tank"
       Display Text: "External"
+
+SecondaryHeatExchanger:
+  Object Type: "Data Group"
+  Data Elements:
+    cold_side_temperature_offset:
+      Description: "Cold-side offset temperature"
+      Data Type: "Numeric"
+      Required: True
+    hot_side_temperature_offset:
+      Description: "Hot-side offset temperature"
+      Data Type: "Numeric"
+      Required: True
+    extra_pump_power:
+      Description: "Extra pump power"
+      Data Type: "Numeric"
+      Required: True      
+ 
