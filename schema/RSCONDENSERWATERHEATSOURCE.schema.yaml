@@ -147,9 +147,6 @@ CoilConfiguration:
     WRAPPED:
       Description: "Coil is wrapped around the tank interior"
       Display Text: "Wrapped"
-    EXTERNAL:  # TODO: Remove after we have the air-to-water heat pump RS
-      Description: "Coil is external to the tank"
-      Display Text: "External"
 
 SecondaryHeatExchanger:
   Object Type: "Data Group"
