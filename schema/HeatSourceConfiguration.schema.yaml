@@ -108,10 +108,10 @@ WeightedDistribution:
       Constraints: [">=0.0", "<=1.0"]
       Required: True
     weight:
-      Description: "Fraction of weight at the corresponding normalized height"
+      Description: "Weight at the corresponding normalized height"
       Data Type: "[Numeric]"
       Units: "-"
-      Constraints: [">=0.0", "<=1.0"]
+      Constraints: [">=0.0"]
       Required: True
 
 HeatingLogic:
@@ -154,7 +154,7 @@ TemperatureBasedHeatingLogic:
       Required: "if !logic_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
-      Data Type: "[Numeric]" #"{WeightedDistribution}"
+      Data Type: "{WeightedDistribution}" #"[Numeric]"
       Required: True
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
