@@ -75,7 +75,7 @@ HeatSourceConfiguration:
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
-      Data Type: "[Numeric]" #"{WeightedDistribution}"
+      Data Type: "{WeightedDistribution}"
       Required: True
     turn_on_logic:
       Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
