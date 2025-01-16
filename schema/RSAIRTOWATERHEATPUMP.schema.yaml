@@ -5,10 +5,10 @@ Schema:
   Title: "Condenser Water Heat Source"
   Description: "Schema for ASHRAE 205 annex RSCONDENSERWATERHEATSOURCE: Condenser heat source"
   Version: "0.1.0"
-  Root Data Group: RSCONDENSERWATERHEATSOURCE
+  Root Data Group: RSAIRTOWATERHEATPUMP
 
 
-RSCONDENSERWATERHEATSOURCE:
+RSAIRTOWATERHEATPUMP:
   Object Type: "Data Group"
   Data Group Template: HeatSourceTemplate
   Data Elements:
@@ -57,10 +57,6 @@ Performance:
       Data Type: Numeric
       Units: "W"
       Constraints: ">=0.0"
-    coil_configuration:
-      Description: "Coil configuration"
-      Data Type: "{CoilConfiguration}"
-      Required: True
     maximum_refrigerant_temperature:
       Description: "Maximum temperature of the refrigerant entering the condenser"
       Data Type: Numeric
@@ -104,6 +100,11 @@ GridVariables:
       Notes:
         - "Water temperature may be vertically stratified across the heat source"
         - "The average water temperature may be weighted according to how heat is distributed to the water from the heat source"
+    outlet_temperature:
+      Description: "Outlet temperature used by single-pass central water-heating systems"
+      Data Type: "[Numeric]"
+      Units: "K"
+      Required: True
 
 LookupVariables:
   Object Type: "Data Group"
@@ -118,13 +119,3 @@ LookupVariables:
       Data Type: "[Numeric]"
       Units: "W"
       Required: True
-
-CoilConfiguration:
-  Object Type: "Enumeration"
-  Enumerators:
-    SUBMERGED:
-      Description: "Coil is submerged within the tank"
-      Display Text: "Submerged"
-    WRAPPED:
-      Description: "Coil is wrapped around the tank interior"
-      Display Text: "Wrapped"

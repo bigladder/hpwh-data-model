@@ -6,6 +6,7 @@ Schema:
   References:
     - "RSRESISTANCEWATERHEATSOURCE"
     - "RSCONDENSERWATERHEATSOURCE"
+    - "RSAIRTOWATERHEATPUMP"
 
 HeatingLogicTemplate:
   Object Type: "Data Group Template"
@@ -70,7 +71,7 @@ HeatSourceConfiguration:
       Notes: "Determines which heat source data group is used for `heat_source`"
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
-      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
+      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
       Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
       Required: True
     heat_distribution:
