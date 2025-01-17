@@ -5,6 +5,8 @@ Schema:
   Title: "Resistance Water Heat Source"
   Description: "Schema for ASHRAE 205 annex RSRESISTANCEWATERHEATSOURCE: Resistance heat source"
   Version: "0.1.0"
+  Root Data Group: RSRESISTANCEWATERHEATSOURCE
+
 
 RSRESISTANCEWATERHEATSOURCE:
   Object Type: "Data Group"

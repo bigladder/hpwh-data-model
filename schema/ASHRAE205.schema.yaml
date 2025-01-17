@@ -24,26 +24,6 @@ RepresentationSpecificationTemplate:
     description:
       Required: False
 
-HeatSourceTemplate:
-  Object Type: "Data Group Template"
-  Required Data Elements:
-    metadata:
-      Required: True
-    performance:
-      Required: True
-    description:
-      Required: False
-
-HeatingLogicTemplate:
-  Object Type: "Data Group Template"
-  Required Data Elements:
-    metadata:
-      Required: True
-    performance:
-      Required: True
-    description:
-      Required: False
-
 # Common Enumerations
 
 SchemaType:
@@ -71,7 +51,7 @@ SchemaType:
       Description: "Resistance Water Heat Source"
     RSCONDENSERWATERHEATSOURCE:
       Description: "Condenser Water Heat Source"
-    HPWHSIMINPUT:  
+    HPWHSIMINPUT:
        Description: "Input required to describe a heat pump water heating system in HPWHsim"
 
 CompressorType:
@@ -177,3 +157,13 @@ LiquidComponent:
       Data Type: "Numeric"
       Constraints: [">=0.0", "<=1.0"]
       Notes: "If omitted, assume equal distribution with any other component with no defined concentration (e.g., can be left blank for the primary component)"
+
+HeatSourceTemplate:
+  Object Type: "Data Group Template"
+  Required Data Elements:
+    metadata:
+      Required: True
+    performance:
+      Required: True
+    description:
+      Required: False
