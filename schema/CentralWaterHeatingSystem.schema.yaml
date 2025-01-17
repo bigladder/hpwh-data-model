@@ -9,6 +9,16 @@ Schema:
   Version: "0.1.0"
   Root Data Group: CentralWaterHeatingSystem
 
+ControlType:
+  Object Type: "Enumeration"
+  Enumerators:
+    FIXED_FLOW_RATE:
+      Description: "Fixed Flow Rate"
+      Notes: "Used for multi-pass systems"
+    FIXED_OUTLET_TEMPERATURE:
+      Description: "Fixed Outlet Temperature"
+      Notes: "Used for single-pass systems"
+
 CentralWaterHeatingSystem:
   Object Type: "Data Group"
   Data Elements:
@@ -29,14 +39,49 @@ CentralWaterHeatingSystem:
     external_inlet_height:
       Description: "Fractional tank height of inlet"
       Data Type: "Numeric"
-      Constrains: "> 0"   
+      Constrains: "> 0"
     external_outlet_height:
       Description: "Fractional tank height of outlet"
       Data Type: "Numeric"
       Constrains: "> 0"
-    multipass_flow_rate:
+    control_type:
+      Description: "Control type"
+      Data Type: "<ControlType>"
+      Required: True
+    fixed_flow_rate:
       Description: "Flow rate, if multipass system"
       Data Type: "Numeric"
+      Units: "m3/s"
       Constrains: "> 0"
+      Required: if control_type=FIXED_FLOW_RATE
+    fixed_outlet_temperature:
+      Description: "Fixed Outlet Temperature"
+      Data Type: "Numeric"
+      Units: "K"
+      Constrains: "> 0"
+      Required: if control_type=FIXED_OUTLET_TEMPERATURE
+    secondary_heat_exchanger:
+      Description: "Secondary heat exchanger"
+      Data Type: "{SecondaryHeatExchanger}"
+      Notes: "Used if an intermediate water loop is needed to separate the refrigerant coil from the potable water"
       Required: False
 
+
+SecondaryHeatExchanger:
+  Object Type: "Data Group"
+  Data Elements:
+    cold_side_temperature_offset:
+      Description: "Cold-side offset temperature"
+      Data Type: "Numeric"
+      Units: "K"
+      Required: True
+    hot_side_temperature_offset:
+      Description: "Hot-side offset temperature"
+      Data Type: "Numeric"
+      Units: "K"
+      Required: True
+    extra_pump_power:
+      Description: "Extra pump power"
+      Data Type: "Numeric"
+      Units: "W"
+      Required: True
