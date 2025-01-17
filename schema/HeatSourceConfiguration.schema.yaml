@@ -6,6 +6,7 @@ Schema:
   References:
     - "RSRESISTANCEWATERHEATSOURCE"
     - "RSCONDENSERWATERHEATSOURCE"
+    - "RSAIRTOWATERHEATPUMP"
 
 HeatingLogicTemplate:
   Object Type: "Data Group Template"
@@ -70,12 +71,12 @@ HeatSourceConfiguration:
       Notes: "Determines which heat source data group is used for `heat_source`"
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
-      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE})"
+      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
       Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
-      Data Type: "[Numeric]" #"{WeightedDistribution}"
+      Data Type: "{WeightedDistribution}"
       Required: True
     turn_on_logic:
       Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
@@ -108,10 +109,10 @@ WeightedDistribution:
       Constraints: [">=0.0", "<=1.0"]
       Required: True
     weight:
-      Description: "Fraction of weight at the corresponding normalized height"
+      Description: "Weight at the corresponding normalized height"
       Data Type: "[Numeric]"
       Units: "-"
-      Constraints: [">=0.0", "<=1.0"]
+      Constraints: [">=0.0"]
       Required: True
 
 HeatingLogic:
@@ -154,7 +155,7 @@ TemperatureBasedHeatingLogic:
       Required: "if !logic_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
-      Data Type: "[Numeric]" #"{WeightedDistribution}"
+      Data Type: "{WeightedDistribution}" #"[Numeric]"
       Required: True
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer

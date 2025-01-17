@@ -26,11 +26,17 @@ HPWHSimInput:
       Description: "Number of tank nodes used for simulation"
       Data Type: "Integer"
       Constrains: "> 0"
-    depresses_temperature: # TODO: Move to HPWHsimInput schema
+    depresses_temperature:
       Description: "Depresses space temperature when activated"
       Data Type: Boolean
-    fixed_volume:
+    fixed_volume: # TODO: Clarify description. Rename?
+      Description: "Tank is not allowed to change volume"
       Data Type: "Boolean"
+      Required: False
+    standard_setpoint:
+      Description: "Standard setpoint"
+      Data Type: "Numeric"
+      Units: "K"
       Required: False
     system_type:
       Description: "System Type"
