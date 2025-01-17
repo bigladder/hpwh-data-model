@@ -2,18 +2,18 @@ Schema:
   Object Type: "Meta"
   References:
     - "ASHRAE205"
-  Title: "Resistance Water Heat Source"
-  Description: "Schema for ASHRAE 205 annex RSRESISTANCEWATERHEATSOURCE: Resistance heat source"
+  Title: "Water Tank"
+  Description: "Schema for ASHRAE 205 annex RSTANK: Water tank"
   Version: "0.1.0"
+  Root Data Group: RSTANK
 
-RSRESISTANCEWATERHEATSOURCE:
+RSTANK:
   Object Type: "Data Group"
-  Data Group Template: HeatSourceBase
   Data Elements:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSRESISTANCEWATERHEATSOURCE"
+      Constraints: "schema=RSTANK"
       Required: True
     description:
       Description: "Data group describing product and rating information"
@@ -22,14 +22,14 @@ RSRESISTANCEWATERHEATSOURCE:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-      
+
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
@@ -46,8 +46,29 @@ ProductInformation:
 Performance:
   Object Type: "Data Group"
   Data Elements:
-    input_power:
-      Description: "Input power"
+    volume:
       Data Type: "Numeric"
-      Units: "W"
+      Units: "m3"
+      Range: ">= 0"
       Required: True
+    diameter:
+      Data Type: "Numeric"
+      Units: "m"
+      Range: ">= 0"
+    ua:
+      Data Type: "Numeric"
+      Units: "W/K"
+      Required: True
+    fittings_ua:
+      Data Type: "Numeric"
+      Units: "W/K"
+    bottom_fraction_of_tank_mixing_on_draw:
+      Description: "Bottom fraction of the tank that should mix during draws"
+      Data Type: "Numeric"
+      Units: "-"
+      Range: ">= 0, <= 1"
+    heat_exchanger_effectiveness: # TODO: Move to separate RS
+      Description: "Effectiveness for heat exchange"
+      Data Type: "Numeric"
+
+

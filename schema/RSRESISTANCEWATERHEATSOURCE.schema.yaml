@@ -2,17 +2,20 @@ Schema:
   Object Type: "Meta"
   References:
     - "ASHRAE205"
-  Title: "Water Tank"
-  Description: "Schema for ASHRAE 205 annex RSTANK: Water tank"
+  Title: "Resistance Water Heat Source"
+  Description: "Schema for ASHRAE 205 annex RSRESISTANCEWATERHEATSOURCE: Resistance heat source"
   Version: "0.1.0"
+  Root Data Group: RSRESISTANCEWATERHEATSOURCE
 
-RSTANK:
+
+RSRESISTANCEWATERHEATSOURCE:
   Object Type: "Data Group"
+  Data Group Template: HeatSourceTemplate
   Data Elements:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSTANK"
+      Constraints: "schema=RSRESISTANCEWATERHEATSOURCE"
       Required: True
     description:
       Description: "Data group describing product and rating information"
@@ -21,7 +24,7 @@ RSTANK:
       Description: "Data group containing performance information"
       Data Type: "{Performance}"
       Required: True
-      
+
 Description:
   Object Type: "Data Group"
   Data Elements:
@@ -41,44 +44,12 @@ ProductInformation:
       Data Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
-            
+
 Performance:
   Object Type: "Data Group"
   Data Elements:
-    volume:
+    input_power:
+      Description: "Input power"
       Data Type: "Numeric"
-      Units: "m" # should be m3
-      Range: ">= 0"
+      Units: "W"
       Required: True
-    diameter:
-      Data Type: "Numeric"
-      Units: "m"
-      Range: ">= 0"
-      Required: False
-    ua:
-      Data Type: "Numeric"
-      Units: "W" # should be W/K
-      Required: True
-    fittings_ua:
-      Data Type: "Numeric"
-      Units: "W" # should be W/K
-      Required: False
-    bottom_fraction_of_tank_mixing_on_draw:
-      Description: "Bottom fraction of the tank that should mix during draws"
-      Data Type: "Numeric"
-      Units: "-"
-      Range: ">= 0, <= 1"
-      Required: False
-    fixed_volume:
-      Data Type: "Boolean"
-      Required: False
-    number_of_nodes:
-      Description: "Number of nodes used for simulation"
-      Data Type: "Integer"
-      Constrains: "> 0"
-    heat_exchanger_effectiveness:  
-      Description: "Effectiveness for heat exchange"
-      Data Type: "Numeric"
-      Required: False
-
-
