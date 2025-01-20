@@ -3,7 +3,7 @@ Schema:
   References:
     - "ASHRAE205"
   Title: "Condenser Water Heat Source"
-  Description: "Schema for ASHRAE 205 annex RSCONDENSERWATERHEATSOURCE: Condenser heat source"
+  Description: "Schema for ASHRAE 205 annex RSAIRTOWATERHEATPUMP: Air-to-Water Heat Pump"
   Version: "0.1.0"
   Root Data Group: RSAIRTOWATERHEATPUMP
 
@@ -15,7 +15,7 @@ RSAIRTOWATERHEATPUMP:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSCONDENSERWATERHEATSOURCE"
+      Constraints: "schema=RSAIRTOWATERHEATPUMP"
       Required: True
     description:
       Description: "Data group describing product and rating information"
