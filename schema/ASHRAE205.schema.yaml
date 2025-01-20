@@ -51,6 +51,8 @@ SchemaType:
       Description: "Resistance Water Heat Source"
     RSCONDENSERWATERHEATSOURCE:
       Description: "Condenser Water Heat Source"
+    RSAIRTOWATERHEATPUMP:
+      Description: "Air-to-Water Heat Pump"
     HPWHSIMINPUT:
        Description: "Input required to describe a heat pump water heating system in HPWHsim"
 
