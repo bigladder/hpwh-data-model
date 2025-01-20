@@ -35,15 +35,15 @@ CentralWaterHeatingSystem:
     standby_power:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
-      Constrains: "> 0"
+      Constraints: ">0.0"
     external_inlet_height:
       Description: "Fractional tank height of inlet"
       Data Type: "Numeric"
-      Constrains: "> 0"
+      Constraints: ">0"
     external_outlet_height:
       Description: "Fractional tank height of outlet"
       Data Type: "Numeric"
-      Constrains: "> 0"
+      Constraints: ">0"
     control_type:
       Description: "Control type"
       Data Type: "<ControlType>"
@@ -52,13 +52,13 @@ CentralWaterHeatingSystem:
       Description: "Flow rate, if multipass system"
       Data Type: "Numeric"
       Units: "m3/s"
-      Constrains: "> 0"
+      Constraints: ">0"
       Required: if control_type=FIXED_FLOW_RATE
     fixed_outlet_temperature:
       Description: "Fixed Outlet Temperature"
       Data Type: "Numeric"
       Units: "K"
-      Constrains: "> 0"
+      Constraints: ">0"
       Required: if control_type=FIXED_OUTLET_TEMPERATURE
     secondary_heat_exchanger:
       Description: "Secondary heat exchanger"

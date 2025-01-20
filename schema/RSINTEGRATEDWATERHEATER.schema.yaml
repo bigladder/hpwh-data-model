@@ -63,5 +63,5 @@ Performance:
     standby_power:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
-      Constrains: "> 0"
+      Constraints: ">0"
 

@@ -1,12 +1,12 @@
 ---
 metadata:
-  schema: HPWHSimInput
+  schema_name: HPWHSimInput
 
 depresses_temperature: false
 fixed_volume: true
 integrated_system:
   metadata:
-    schema: RSINTEGRATEDWATERHEATER
+    schema_name: RSINTEGRATEDWATERHEATER
   performance:
     heat_source_configurations:
     - companion_heat_source_id: compressor

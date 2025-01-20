@@ -120,7 +120,7 @@ HeatingLogic:
   Data Elements:
     heating_logic_type:
       Description: "Type of heating logic"
-      Data Type: "{HeatingLogicType}"
+      Data Type: "<HeatingLogicType>"
       Required: True
       Notes: "Determines which heating-logic data group is used for `heating_logic`"
     heating_logic:
@@ -151,7 +151,7 @@ TemperatureBasedHeatingLogic:
       Required: "if !absolute_temperature"
     standby_temperature_location:
       Description: "Standby temperature location"
-      Data Type: "{StandbyTemperatureLocation}"
+      Data Type: "<StandbyTemperatureLocation>"
       Required: "if !logic_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
