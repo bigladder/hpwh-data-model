@@ -212,7 +212,12 @@ integrated_system:
         ua: 2.375
         volume: 0.170721991
 metadata:
-  schema: HPWHSimInput
+  schema_author: Big Ladder Software
+  schema_name: HPWHSimInput
+  schema_version: 1.0.0
+  author: None
+  id: 6998e64f-7824-414c-9d48-57e43ee47071
+  time_of_creation: 2022-11-23T11:45Z
 number_of_nodes: 12
 standard_setpoint: 325.92777777777775
 system_type: INTEGRATED
