@@ -31,6 +31,7 @@ def task_validate_schemas():
 def task_validate_example_files():
     """Validates the example files against the JSON schema (and other validation steps)"""
     return {
+        "task_dep": [f"validate_schemas"],
         "file_dep": data_model.examples
         + [schema.file_path for schema in data_model.schemas],
         "actions": [(data_model.validate_example_files, [])],
@@ -45,6 +46,6 @@ def task_generate_cpp_code():
         + [schema.meta_schema_path for schema in data_model.schemas],
         "targets": [schema.cpp_header_file_path for schema in data_model.cpp_schemas]
         + [schema.cpp_source_file_path for schema in data_model.cpp_schemas],
-        "actions": [(data_model.generate_cpp_project, [[]])],
+        "actions": [(data_model.generate_cpp_project, [])],
         "clean": True,
     }
