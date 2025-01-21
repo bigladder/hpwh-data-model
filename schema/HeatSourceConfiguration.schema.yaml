@@ -24,7 +24,11 @@ HeatSourceType:
       Description: "Heat sources that operate by coolant condenser systems"
       Display Text: "Condenser"
       Notes: ""
-
+    AIRTOWATERHEATPUMP:
+      Description: "Heat sources that operate by air-to-water heat pump systems"
+      Display Text: "AirToWaterHeatPump"
+      Notes: ""
+      
 HeatingLogicType:
   Object Type: "Enumeration"
   Enumerators:
@@ -72,7 +76,7 @@ HeatSourceConfiguration:
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
-      Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
+      Constraints: "heat_source_type(RESISTANCE, CONDENSER, AIRTOWATERHEATPUMP)"
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
