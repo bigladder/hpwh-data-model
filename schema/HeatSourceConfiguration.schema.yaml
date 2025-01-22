@@ -7,6 +7,7 @@ Schema:
     - "RSRESISTANCEWATERHEATSOURCE"
     - "RSCONDENSERWATERHEATSOURCE"
     - "RSAIRTOWATERHEATPUMP"
+    - "ASHRAE205"
 
 HeatingLogicTemplate:
   Object Type: "Data Group Template"
