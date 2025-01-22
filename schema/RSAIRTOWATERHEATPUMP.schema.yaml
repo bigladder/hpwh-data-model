@@ -101,10 +101,10 @@ GridVariables:
         - "Water temperature may be vertically stratified across the heat source"
         - "The average water temperature may be weighted according to how heat is distributed to the water from the heat source"
     outlet_temperature:
-      Description: "Outlet temperature used by single-pass central water-heating systems"
+      Description: "Outlet temperature"
       Data Type: "[Numeric]"
       Units: "K"
-      Required: False
+      Required: True
 
 LookupVariables:
   Object Type: "Data Group"
