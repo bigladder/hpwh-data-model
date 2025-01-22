@@ -104,7 +104,7 @@ GridVariables:
       Description: "Outlet temperature used by single-pass central water-heating systems"
       Data Type: "[Numeric]"
       Units: "K"
-      Required: True
+      Required: False
 
 LookupVariables:
   Object Type: "Data Group"
