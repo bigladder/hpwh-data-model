@@ -92,16 +92,16 @@ GridVariables:
       Data Type: "[Numeric]"
       Units: "K"
       Required: True
-    heat_source_temperature:
-      Description: "Average water temperature at the heat source"
+    condenser_entering_temperature:
+      Description: "Average water temperature entering the condenser"
       Data Type: "[Numeric]"
       Units: "K"
       Required: True
       Notes:
         - "Water temperature may be vertically stratified across the heat source"
         - "The average water temperature may be weighted according to how heat is distributed to the water from the heat source"
-    outlet_temperature:
-      Description: "Outlet temperature"
+    condenser_leaving_temperature:
+      Description: "Average water temperature leaving the condenser"
       Data Type: "[Numeric]"
       Units: "K"
       Required: True
