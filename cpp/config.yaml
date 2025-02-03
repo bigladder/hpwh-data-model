@@ -1,0 +1,4 @@
+dependencies:
+  - name: "nlohmann_json"
+  - name: "courier"
+  - name: "fmt"

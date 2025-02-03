@@ -59,7 +59,7 @@ Performance:
       Constraints: ">=0.0"
     coil_configuration:
       Description: "Coil configuration"
-      Data Type: "{CoilConfiguration}"
+      Data Type: "<CoilConfiguration>"
       Required: True
     maximum_refrigerant_temperature:
       Description: "Maximum temperature of the refrigerant entering the condenser"

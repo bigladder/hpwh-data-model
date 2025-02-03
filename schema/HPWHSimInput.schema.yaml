@@ -25,7 +25,7 @@ HPWHSimInput:
     number_of_nodes:
       Description: "Number of tank nodes used for simulation"
       Data Type: "Integer"
-      Constrains: "> 0"
+      Constraints: ">0"
     depresses_temperature:
       Description: "Depresses space temperature when activated"
       Data Type: Boolean

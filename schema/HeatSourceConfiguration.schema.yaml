@@ -7,6 +7,7 @@ Schema:
     - "RSRESISTANCEWATERHEATSOURCE"
     - "RSCONDENSERWATERHEATSOURCE"
     - "RSAIRTOWATERHEATPUMP"
+    - "ASHRAE205"
 
 HeatingLogicTemplate:
   Object Type: "Data Group Template"
@@ -24,7 +25,11 @@ HeatSourceType:
       Description: "Heat sources that operate by coolant condenser systems"
       Display Text: "Condenser"
       Notes: ""
-
+    AIRTOWATERHEATPUMP:
+      Description: "Heat sources that operate by air-to-water heat pump systems"
+      Display Text: "AirToWaterHeatPump"
+      Notes: ""
+      
 HeatingLogicType:
   Object Type: "Enumeration"
   Enumerators:
@@ -72,7 +77,7 @@ HeatSourceConfiguration:
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
       Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
-      Constraints: "heat_source_type(RESISTANCE, CONDENSER)"
+      Constraints: "heat_source_type(RESISTANCE, CONDENSER, AIRTOWATERHEATPUMP)"
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
@@ -120,7 +125,7 @@ HeatingLogic:
   Data Elements:
     heating_logic_type:
       Description: "Type of heating logic"
-      Data Type: "{HeatingLogicType}"
+      Data Type: "<HeatingLogicType>"
       Required: True
       Notes: "Determines which heating-logic data group is used for `heating_logic`"
     heating_logic:
@@ -151,7 +156,7 @@ TemperatureBasedHeatingLogic:
       Required: "if !absolute_temperature"
     standby_temperature_location:
       Description: "Standby temperature location"
-      Data Type: "{StandbyTemperatureLocation}"
+      Data Type: "<StandbyTemperatureLocation>"
       Required: "if !logic_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
