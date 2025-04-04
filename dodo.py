@@ -28,6 +28,17 @@ def task_validate_schemas():
         "actions": [(data_model.validate_schemas, [])],
     }
 
+def task_generate_json_schemas():
+    """Generate JSON schemas"""
+    return {
+        "task_dep": [f"validate_schemas"],
+        "file_dep": [schema.file_path for schema in data_model.schemas]
+        + [schema.meta_schema_path for schema in data_model.schemas],
+        "targets": [schema.json_schema_path for schema in data_model.schemas],
+        "actions": [(data_model.generate_json_schemas, [])],
+        "clean": True,
+    }
+
 def task_validate_example_files():
     """Validates the example files against the JSON schema (and other validation steps)"""
     return {
