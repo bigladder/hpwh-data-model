@@ -7,7 +7,7 @@ Schema:
   Title: "HPWHsim Input"
   Description: "Input required to describe a heat pump water heating system in HPWHsim"
   Version: "0.1.0"
-  Root Data Group: HPWHSimInput
+  Root Data Group: "HPWHSimInput"
 
 HPWHSystemType:
   Object Type: "Enumeration"
@@ -20,6 +20,23 @@ HPWHSystemType:
       Display Text: "Central"
 
 HPWHSimInput:
+  Object Type: "Data Group"
+  Data Elements:
+    metadata:
+      Description: "Metadata data group"
+      Data Type: "{Metadata}"
+      Constraints: "schema=HPWHSimInput"
+      Required: True
+    description:
+      Description: "Data group describing product and rating information"
+      Data Type: "{Description}"
+    performance:
+      Description: "Data group containing performance information"
+      Data Type: "{Performance}"
+      Required: True
+
+
+Performance:
   Object Type: "Data Group"
   Data Elements:
     number_of_nodes:
