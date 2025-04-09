@@ -25,7 +25,7 @@ HPWHSimInput:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=HPWHSimInput"
+      Constraints: "schema_name=\"HPWHSimInput\""
       Required: True
     number_of_nodes:
       Description: "Number of tank nodes used for simulation"
