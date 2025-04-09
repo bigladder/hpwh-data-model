@@ -27,6 +27,7 @@ HPWHSimInput:
       Data Type: "{Metadata}"
       Constraints: "schema=HPWHSimInput"
       Required: True
+<<<<<<< Updated upstream
     description:
       Description: "Data group describing product and rating information"
       Data Type: "{Description}"
@@ -39,6 +40,8 @@ HPWHSimInput:
 Performance:
   Object Type: "Data Group"
   Data Elements:
+=======
+>>>>>>> Stashed changes
     number_of_nodes:
       Description: "Number of tank nodes used for simulation"
       Data Type: "Integer"
