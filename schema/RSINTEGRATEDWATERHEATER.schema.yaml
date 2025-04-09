@@ -33,7 +33,19 @@ Description:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-
+    certified_reference_number:
+      Description: "AHRI certified reference number"
+      Data Type: "String"    
+    nominal_tank_volume:
+      Description: "Nominal tank volume"
+      Data Type: "Numeric"
+    tested_first_hour_rating:
+      Description: "Tested first-hour rating"
+      Data Type: "Numeric"
+    tested_rating_24hour:
+      Description: "Tested 24-hour rating"
+      Data Type: "{TestedRating24Hour}"
+    
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
@@ -47,6 +59,16 @@ ProductInformation:
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
+TestedRating24Hour:
+  Object Type: "Rating Data Group"
+  Data Elements:
+    tested_recovery_efficiency:
+      Description: "Tested recovery efficiency"
+      Data Type: "Numeric"
+    tested_uniform_energy_factor:
+      Description: "Tested uniform energy factor"
+      Data Type: "Numeric"
+      
 Performance:
   Object Type: "Data Group"
   Data Elements:
