@@ -59,14 +59,14 @@ Rating10CFR430:
     nominal_tank_volume:
       Description: "Nominal tank volume"
       Data Type: "Numeric"
-    tested_first_hour_rating:
-      Description: "Tested first-hour rating"
+    first_hour_rating:
+      Description: "First-hour rating"
       Data Type: "Numeric"
-    tested_recovery_efficiency:
-      Description: "Tested recovery efficiency"
+    recovery_efficiency:
+      Description: "Recovery efficiency"
       Data Type: "Numeric"
-    tested_uniform_energy_factor:
-      Description: "Tested uniform energy factor"
+    uniform_energy_factor:
+      Description: "Uniform energy factor"
       Data Type: "Numeric"
       
 Performance:
