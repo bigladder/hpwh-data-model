@@ -17,7 +17,7 @@ RSINTEGRATEDWATERHEATER:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSINTEGRATEDWATERHEATER"
+      Constraints: schema_name=RSINTEGRATEDWATERHEATER
       Required: True
     description:
       Description: "Data group describing product and rating information"

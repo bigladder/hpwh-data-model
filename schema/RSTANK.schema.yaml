@@ -13,7 +13,7 @@ RSTANK:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSTANK"
+      Constraints: schema_name=RSTANK
       Required: True
     description:
       Description: "Data group describing product and rating information"

@@ -15,7 +15,7 @@ RSCONDENSERWATERHEATSOURCE:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSCONDENSERWATERHEATSOURCE"
+      Constraints: schema_name=RSCONDENSERWATERHEATSOURCE
       Required: True
     description:
       Description: "Data group describing product and rating information"

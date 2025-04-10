@@ -15,7 +15,7 @@ RSAIRTOWATERHEATPUMP:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSAIRTOWATERHEATPUMP"
+      Constraints: schema_name=RSAIRTOWATERHEATPUMP
       Required: True
     description:
       Description: "Data group describing product and rating information"
