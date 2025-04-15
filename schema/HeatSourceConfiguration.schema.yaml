@@ -86,14 +86,14 @@ HeatSourceConfiguration:
     turn_on_logic:
       Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
       Data Type: "[{HeatingLogic}]"
-      Required: "if !backup_heat_source_id"
+      Required: True
     shut_off_logic:
       Description: "An array of logic conditions that define when the heat source shuts off if it is currently on"
       Data Type: "[{HeatingLogic}]"
     standby_logic: # TODO: Is this needed?
       Description: "Checks that bottom is below a temperature to prevent short cycling"
       Data Type: "{HeatingLogic}"
-      Required: "if !backup_heat_source_id"
+      Required: False
     backup_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that engages if this one cannot meet the setpoint"
       Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)

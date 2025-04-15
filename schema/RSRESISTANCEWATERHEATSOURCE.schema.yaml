@@ -7,6 +7,7 @@ Schema:
   Version: "0.1.0"
   Root Data Group: RSRESISTANCEWATERHEATSOURCE
 
+
 RSRESISTANCEWATERHEATSOURCE:
   Object Type: "Data Group"
   Data Group Template: HeatSourceTemplate
@@ -14,7 +15,7 @@ RSRESISTANCEWATERHEATSOURCE:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: schema_name="RSRESISTANCEWATERHEATSOURCE"
+      Constraints: "schema=RSRESISTANCEWATERHEATSOURCE"
       Required: True
     description:
       Description: "Data group describing product and rating information"
