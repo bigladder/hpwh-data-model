@@ -39,11 +39,11 @@ CentralWaterHeatingSystem:
     external_inlet_height:
       Description: "Fractional tank height of inlet"
       Data Type: "Numeric"
-      Constraints: ">0"
+      Constraints: ">=0.0"
     external_outlet_height:
       Description: "Fractional tank height of outlet"
       Data Type: "Numeric"
-      Constraints: ">0"
+      Constraints: ">=0.0"
     control_type:
       Description: "Control type"
       Data Type: "<ControlType>"
@@ -54,12 +54,6 @@ CentralWaterHeatingSystem:
       Units: "m3/s"
       Constraints: ">0"
       Required: if control_type=FIXED_FLOW_RATE
-    fixed_outlet_temperature:
-      Description: "Fixed Outlet Temperature"
-      Data Type: "Numeric"
-      Units: "K"
-      Constraints: ">0"
-      Required: if control_type=FIXED_OUTLET_TEMPERATURE
     secondary_heat_exchanger:
       Description: "Secondary heat exchanger"
       Data Type: "{SecondaryHeatExchanger}"

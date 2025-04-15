@@ -17,7 +17,7 @@ RSINTEGRATEDWATERHEATER:
     metadata:
       Description: "Metadata data group"
       Data Type: "{Metadata}"
-      Constraints: "schema=RSINTEGRATEDWATERHEATER"
+      Constraints: schema_name="RSINTEGRATEDWATERHEATER"
       Required: True
     description:
       Description: "Data group describing product and rating information"
@@ -86,4 +86,3 @@ Performance:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constraints: ">0"
-
