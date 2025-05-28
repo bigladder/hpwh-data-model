@@ -93,7 +93,7 @@ HeatSourceConfiguration:
     standby_logic: # TODO: Is this needed?
       Description: "Checks that bottom is below a temperature to prevent short cycling"
       Data Type: "{HeatingLogic}"
-      Required: "if !backup_heat_source_id"
+      Required: False
     backup_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that engages if this one cannot meet the setpoint"
       Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
@@ -157,11 +157,11 @@ TemperatureBasedHeatingLogic:
     standby_temperature_location:
       Description: "Standby temperature location"
       Data Type: "<StandbyTemperatureLocation>"
-      Required: "if !logic_distribution"
+      Required: "if !temperature_weight_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "{WeightedDistribution}" #"[Numeric]"
-      Required: True
+      Required: "if !standby_temperature_location"
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
