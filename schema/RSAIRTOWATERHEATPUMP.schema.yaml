@@ -44,6 +44,18 @@ ProductInformation:
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
+LowTemperatureSetpoint:
+    low_environment_temperature_threshold:
+      Description: "Temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    maximum_setpoint_temperature:
+      Description: "Maximum setpoint temperature at low environment temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+      
 Performance:
   Object Type: "Data Group"
   Data Elements:
@@ -70,7 +82,11 @@ Performance:
     use_defrost_map: # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
       Data Type: Boolean
-
+    low_temperature_setpoint: 
+      Description: "Modified setpoint temperature used at low environment temperature."
+      Data Type: "{LowTemperatureSetpoint}"
+      Required: False
+      
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
