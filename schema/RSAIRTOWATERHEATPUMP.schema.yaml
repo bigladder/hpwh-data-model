@@ -45,6 +45,8 @@ ProductInformation:
       Required: True
 
 LowTemperatureSetpoint:
+  Object Type: "Data Group"
+  Data Elements:
     low_temperature_threshold:
       Description: "Low-environment-temperature threshold for setpoint-temperature control"
       Data Type: Numeric
