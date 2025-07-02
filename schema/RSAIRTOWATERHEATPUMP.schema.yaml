@@ -57,7 +57,26 @@ LowTemperatureSetpointLimit:
       Data Type: Numeric
       Units: "K"
       Required: True
-      
+
+ResistanceElementDefrost:
+  Object Type: "Data Group"
+  Data Elements:
+    input_power:
+      Description: "Input power"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    temperature_lift:
+      Description: "Resulting increase of environment temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    activation_temperature_threshold:
+      Description: "Low-environment-temperature threshold for activation"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+            
 Performance:
   Object Type: "Data Group"
   Data Elements:
@@ -88,6 +107,10 @@ Performance:
       Description: "Maximum setpoint temperature at low environment temperature."
       Data Type: "{LowTemperatureSetpointLimit}"
       Required: False
+    resistance_element_defrost: 
+      Description: "Resistance element for defrost"
+      Data Type: "{ResistanceElementDefrost}"
+      Required: False      
       
 PerformanceMap:
   Object Type: "Data Group"
