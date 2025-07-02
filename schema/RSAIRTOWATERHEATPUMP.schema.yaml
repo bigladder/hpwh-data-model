@@ -45,13 +45,13 @@ ProductInformation:
       Required: True
 
 LowTemperatureSetpoint:
-    low_environment_temperature_threshold:
-      Description: "Temperature"
+    low_temperature_threshold:
+      Description: "Low-environment-temperature threshold for setpoint-temperature control"
       Data Type: Numeric
       Units: "K"
       Required: True
-    maximum_setpoint_temperature:
-      Description: "Maximum setpoint temperature at low environment temperature"
+    maximum_setpoint_at_low_temperature:
+      Description: "Maximum setpoint temperature below low-environment-temperature threshold"
       Data Type: Numeric
       Units: "K"
       Required: True
@@ -83,7 +83,7 @@ Performance:
       Description: "Use defrost map"
       Data Type: Boolean
     low_temperature_setpoint: 
-      Description: "Modified setpoint temperature used at low environment temperature."
+      Description: "Maximum setpoint temperature at low environment temperature."
       Data Type: "{LowTemperatureSetpoint}"
       Required: False
       
