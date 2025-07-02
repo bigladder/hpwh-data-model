@@ -2,6 +2,19 @@
   "depresses_temperature": false,
   "fixed_volume": true,
   "integrated_system": {
+    "description": {
+      "product_information": {
+        "manufacturer": "BRADFORD WHITE",
+        "model_number": "RE2H65T**-*****"
+      },
+      "rating_10_cfr_430": {
+        "certified_reference_number": "204835481",
+        "first_hour_rating": 0.29904739,
+        "nominal_tank_volume": 0.24605165,
+        "recovery_efficiency": 3.91,
+        "uniform_energy_factor": 3.64
+      }
+    },
     "metadata": {
       "author": "California Energy Commission",
       "description": "Representation of embedded HPWH element",

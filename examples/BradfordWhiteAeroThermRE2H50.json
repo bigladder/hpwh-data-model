@@ -2,6 +2,19 @@
   "depresses_temperature": false,
   "fixed_volume": true,
   "integrated_system": {
+    "description": {
+      "product_information": {
+        "manufacturer": "BRADFORD WHITE",
+        "model_number": "RE2H50S*-*****"
+      },
+      "rating_10_cfr_430": {
+        "certified_reference_number": "200094643",
+        "first_hour_rating": 0.24605165,
+        "nominal_tank_volume": 0.1892705,
+        "recovery_efficiency": 4.06,
+        "uniform_energy_factor": 3.44
+      }
+    },
     "metadata": {
       "author": "California Energy Commission",
       "description": "Representation of embedded HPWH element",

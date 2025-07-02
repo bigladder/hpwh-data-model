@@ -33,7 +33,10 @@ Description:
     product_information:
       Description: "Data group describing product information"
       Data Type: "{ProductInformation}"
-
+    rating_10_cfr_430:
+      Description: "Data group containing information relevant to products rated under AHRI 10 CFR Part 430"
+      Data Type: "{Rating10CFR430}"
+    
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
@@ -47,6 +50,25 @@ ProductInformation:
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
+Rating10CFR430:
+  Object Type: "Data Group"
+  Data Elements:
+    certified_reference_number:
+      Description: "AHRI certified reference number"
+      Data Type: "String"    
+    nominal_tank_volume:
+      Description: "Nominal tank volume"
+      Data Type: "Numeric"
+    first_hour_rating:
+      Description: "First-hour rating"
+      Data Type: "Numeric"
+    recovery_efficiency:
+      Description: "Recovery efficiency"
+      Data Type: "Numeric"
+    uniform_energy_factor:
+      Description: "Uniform energy factor"
+      Data Type: "Numeric"
+      
 Performance:
   Object Type: "Data Group"
   Data Elements:

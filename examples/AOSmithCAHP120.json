@@ -2,6 +2,12 @@
   "depresses_temperature": false,
   "fixed_volume": true,
   "integrated_system": {
+    "description": {
+      "product_information": {
+        "manufacturer": "AOSmith",
+        "model_number": "CAHP120"
+      }
+    },
     "metadata": {
       "author": "California Energy Commission",
       "description": "Representation of embedded HPWH element",
