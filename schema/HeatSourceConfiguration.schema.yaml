@@ -137,6 +137,10 @@ HeatingLogic:
       Description: "Result of comparison for activation"
       Data Type: "<ComparisonType>"
       Required: True
+    checks_standby_logic:
+      Description: "Check standby logic for activation"
+      Data Type: Boolean
+      Notes: "Activated iff standby logic is also activated"
 
 TemperatureBasedHeatingLogic:
   Object Type: "Data Group"
