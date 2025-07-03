@@ -137,10 +137,6 @@ HeatingLogic:
       Description: "Result of comparison for activation"
       Data Type: "<ComparisonType>"
       Required: True
-    checks_standby_logic:
-      Description: "Check standby logic for activation"
-      Data Type: Boolean
-      Notes: "Activated iff standby logic is also activated"
 
 TemperatureBasedHeatingLogic:
   Object Type: "Data Group"
@@ -166,7 +162,11 @@ TemperatureBasedHeatingLogic:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "{WeightedDistribution}" #"[Numeric]"
       Required: True
-
+    checks_standby_logic:
+      Description: "Check standby logic for activation"
+      Data Type: Boolean
+      Notes: "Activated iff standby logic is also activated"
+      
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
   Data Group Template: HeatingLogicTemplate
