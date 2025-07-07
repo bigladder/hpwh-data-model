@@ -36,13 +36,17 @@ CentralWaterHeatingSystem:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
       Constraints: ">0.0"
+      Units: "W"
+      Constraints: ">0"
     external_inlet_height:
       Description: "Fractional tank height of inlet"
       Data Type: "Numeric"
+      Units: "-"
       Constraints: ">=0.0"
     external_outlet_height:
       Description: "Fractional tank height of outlet"
       Data Type: "Numeric"
+      Units: "-"
       Constraints: ">=0.0"
     control_type:
       Description: "Control type"
@@ -78,4 +82,5 @@ SecondaryHeatExchanger:
       Description: "Extra pump power"
       Data Type: "Numeric"
       Units: "W"
+      Constraints: ">0"
       Required: True

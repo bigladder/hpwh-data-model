@@ -10,7 +10,11 @@ Schema:
   Description: "Schema for ASHRAE 205 annex RSINTEGRATEDWATERHEATER: Integrated Heat-Pump Water Heater"
   Version: "0.1.0"
   Root Data Group: RSINTEGRATEDWATERHEATER
-
+  Unit Systems:
+    RatingsUnits:
+      - gal
+      - gal/h
+    
 RSINTEGRATEDWATERHEATER:
   Object Type: "Data Group"
   Data Elements:
@@ -49,26 +53,34 @@ ProductInformation:
       Data Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
-
+      
 Rating10CFR430:
   Object Type: "Data Group"
   Data Elements:
     certified_reference_number:
       Description: "AHRI certified reference number"
       Data Type: "String"    
-    nominal_tank_volume:
-      Description: "Nominal tank volume"
+    nominal_storage_capacity_of_the_tank:
+      Description: "Nominal storage capacity of the tank"
       Data Type: "Numeric"
+      Units: "gal"
+      Constraints: ">0.0"
     first_hour_rating:
       Description: "First-hour rating"
       Data Type: "Numeric"
+      Units: "gal/h"
+      Constraints: ">0.0"
     recovery_efficiency:
       Description: "Recovery efficiency"
       Data Type: "Numeric"
+      Units: "-"
+      Constraints: ">0.0" 
     uniform_energy_factor:
-      Description: "Uniform energy factor"
+      Description: "Uniform Energy Factor (UEF)"
       Data Type: "Numeric"
-      
+      Units: "-"
+      Constraints: ">0.0" 
+               
 Performance:
   Object Type: "Data Group"
   Data Elements:
@@ -85,4 +97,5 @@ Performance:
     standby_power:
       Description: "Power drawn when system is in standby mode"
       Data Type: "Numeric"
+      Units: "W"
       Constraints: ">0"

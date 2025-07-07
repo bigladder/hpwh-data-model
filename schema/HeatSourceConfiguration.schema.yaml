@@ -171,10 +171,13 @@ StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it 
       Description: "Decision point"
       Constraints: ">=0.0"
       Data Type: Numeric
+      Units: "-"
       Required: True
     minimum_useful_temperature:
       Description: "Minimum useful temperature"
+      Units: "K"
       Data Type: Numeric
+      Constraints: ">0.0"
     hysteresis_fraction:
       Description: "Hysteresis fraction"
       Data Type: Numeric
@@ -186,7 +189,7 @@ StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it 
       Required: True
     constant_mains_temperature:
       Description: "Constant mains temperature"
-      Constraints: ">=0.0"
+      Constraints: ">0.0"
       Data Type: Numeric
       Units: "K"
       Required: "if uses_constant_mains"
