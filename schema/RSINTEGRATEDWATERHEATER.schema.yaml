@@ -60,7 +60,7 @@ Rating10CFR430:
     certified_reference_number:
       Description: "AHRI certified reference number"
       Data Type: "String"    
-    nominal_storage_capacity_of_the_tank:
+    nominal_tank_volume:
       Description: "Nominal storage capacity of the tank"
       Data Type: "Numeric"
       Units: "gal"
@@ -71,7 +71,7 @@ Rating10CFR430:
       Units: "gal/h"
       Constraints: ">0.0"
     recovery_efficiency:
-      Description: "Recovery efficiency"
+      Description: "Recovery Efficiency"
       Data Type: "Numeric"
       Units: "-"
       Constraints: ">0.0" 
