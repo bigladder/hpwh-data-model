@@ -157,11 +157,11 @@ TemperatureBasedHeatingLogic:
     standby_temperature_location:
       Description: "Standby temperature location"
       Data Type: "<StandbyTemperatureLocation>"
-      Required: "if !logic_distribution"
+      Required: "if !temperature_weight_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "{WeightedDistribution}" #"[Numeric]"
-      Required: True
+      Required: "if !standby_temperature_location"
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
