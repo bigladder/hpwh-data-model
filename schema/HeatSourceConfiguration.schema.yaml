@@ -157,11 +157,11 @@ TemperatureBasedHeatingLogic:
     standby_temperature_location:
       Description: "Standby temperature location"
       Data Type: "<StandbyTemperatureLocation>"
-      Required: "if !logic_distribution"
+      Required: "if !temperature_weight_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "{WeightedDistribution}" #"[Numeric]"
-      Required: True
+      Required: "if !standby_temperature_location"
 
 StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
@@ -171,10 +171,13 @@ StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it 
       Description: "Decision point"
       Constraints: ">=0.0"
       Data Type: Numeric
+      Units: "-"
       Required: True
     minimum_useful_temperature:
       Description: "Minimum useful temperature"
+      Units: "K"
       Data Type: Numeric
+      Constraints: ">0.0"
     hysteresis_fraction:
       Description: "Hysteresis fraction"
       Data Type: Numeric
@@ -186,7 +189,7 @@ StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it 
       Required: True
     constant_mains_temperature:
       Description: "Constant mains temperature"
-      Constraints: ">=0.0"
+      Constraints: ">0.0"
       Data Type: Numeric
       Units: "K"
       Required: "if uses_constant_mains"

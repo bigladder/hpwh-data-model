@@ -58,10 +58,12 @@ Performance:
     ua:
       Data Type: "Numeric"
       Units: "W/K"
+      Constraints: ">=0.0"
       Required: True
     fittings_ua:
       Data Type: "Numeric"
       Units: "W/K"
+      Constraints: ">=0.0"
     bottom_fraction_of_tank_mixing_on_draw:
       Description: "Bottom fraction of the tank that should mix during draws"
       Data Type: "Numeric"
@@ -72,3 +74,5 @@ Performance:
     heat_exchanger_effectiveness: # TODO: Move to separate RS
       Description: "Effectiveness for heat exchange"
       Data Type: "Numeric"
+      Units: "-"
+      Constraints: ">=0.0"
