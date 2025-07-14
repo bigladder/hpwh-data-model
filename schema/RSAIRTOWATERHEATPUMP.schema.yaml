@@ -44,6 +44,39 @@ ProductInformation:
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
+MaximumSetpointAtLowTemperature:
+  Object Type: "Data Group"
+  Data Elements:
+    threshold_environment_temperature:
+      Description: "Low environment-temperature threshold for setpoint control"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    maximum_setpoint_temperature:
+      Description: "Maximum setpoint temperature below threshold_temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+
+ResistanceElementDefrost:
+  Object Type: "Data Group"
+  Data Elements:
+    input_power:
+      Description: "Input power"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    lift_temperature:
+      Description: "Resulting increase of environment temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    activation_temperature:
+      Description: "Low environment temperature for activation"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+            
 Performance:
   Object Type: "Data Group"
   Data Elements:
