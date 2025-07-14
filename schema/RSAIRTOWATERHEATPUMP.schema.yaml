@@ -47,13 +47,13 @@ ProductInformation:
 LowTemperatureSetpointLimit:
   Object Type: "Data Group"
   Data Elements:
-    low_temperature_threshold:
-      Description: "Low-environment-temperature threshold for setpoint-temperature control"
+    threshold_environment_temperature:
+      Description: "Low environment-temperature threshold for setpoint control"
       Data Type: Numeric
       Units: "K"
       Required: True
-    maximum_setpoint_at_low_temperature:
-      Description: "Maximum setpoint temperature below low-environment-temperature threshold"
+    maximum_setpoint_temperature:
+      Description: "Maximum setpoint temperature below threshold_temperature"
       Data Type: Numeric
       Units: "K"
       Required: True
