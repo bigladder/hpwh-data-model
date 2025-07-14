@@ -66,13 +66,13 @@ ResistanceElementDefrost:
       Data Type: Numeric
       Units: "K"
       Required: True
-    temperature_lift:
+    lift_temperature:
       Description: "Resulting increase of environment temperature"
       Data Type: Numeric
       Units: "K"
       Required: True
-    activation_temperature_threshold:
-      Description: "Low-environment-temperature threshold for activation"
+    activation_temperature:
+      Description: "Low environment temperature for activation"
       Data Type: Numeric
       Units: "K"
       Required: True
