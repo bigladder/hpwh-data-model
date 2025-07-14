@@ -44,16 +44,16 @@ ProductInformation:
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
-LowTemperatureSetpointLimit:
+MaximumSetpointAtLowTemperature:
   Object Type: "Data Group"
   Data Elements:
-    low_temperature_threshold:
-      Description: "Low-environment-temperature threshold for setpoint-temperature control"
+    threshold_environment_temperature:
+      Description: "Low environment-temperature threshold for setpoint control"
       Data Type: Numeric
       Units: "K"
       Required: True
-    maximum_setpoint_at_low_temperature:
-      Description: "Maximum setpoint temperature below low-environment-temperature threshold"
+    maximum_setpoint_temperature:
+      Description: "Maximum setpoint temperature below threshold_temperature"
       Data Type: Numeric
       Units: "K"
       Required: True
@@ -103,9 +103,9 @@ Performance:
     use_defrost_map: # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
       Data Type: Boolean
-    low_temperature_setpoint_limit: 
-      Description: "Maximum setpoint temperature at low environment temperature."
-      Data Type: "{LowTemperatureSetpointLimit}"
+    maximum_setpoint_at_low_temperature: 
+      Description: "Use maximum setpoint temperature at low environment temperature."
+      Data Type: "{MaximumSetpointAtLowTemperature}"
       Required: False
     resistance_element_defrost: 
       Description: "Resistance element for defrost"
