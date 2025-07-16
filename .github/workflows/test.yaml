@@ -27,5 +27,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install doit
         run: uv pip install doit
+      - name: Sync uv
+        run: uv sync
       - name: Build and test
         run: doit
