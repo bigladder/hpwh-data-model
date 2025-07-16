@@ -26,4 +26,4 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Build and test
-        run: poetry run doit
+        run: doit
