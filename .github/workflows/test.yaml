@@ -25,5 +25,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install doit
+        run: uv pip install doit
       - name: Build and test
         run: doit
