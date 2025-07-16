@@ -3,7 +3,7 @@ name = "hpwh-data-model"
 version = "0.1.0"
 description = ""
 authors = [{ name = "Big Ladder Software" }]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = ["lattice"]
 
 [dependency-groups]
@@ -16,4 +16,3 @@ dev = [
 
 [tool.uv.sources]
 lattice = { git = "https://github.com/bigladder/lattice.git", branch = "main" }
-
