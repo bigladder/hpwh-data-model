@@ -58,7 +58,6 @@ HPWHSimInput:
       Required: if system_type=CENTRAL
     use_cop_for_condenser_performance:
       Description: "Use coefficient-of-performance for condenser computations"
-      Data Type: "Numeric"
-      Units: "-"
+      Data Type: "Boolean"
       Required: False
 
