@@ -56,4 +56,9 @@ HPWHSimInput:
       Description: "The corresponding data group containing Standard 205 system component representations"
       Data Type: "{CentralWaterHeatingSystem}"
       Required: if system_type=CENTRAL
+    use_cop_for_condenser_performance:
+      Description: "Use coefficient-of-performance for condenser computations"
+      Data Type: "Numeric"
+      Units: "-"
+      Required: False
 
