@@ -56,4 +56,9 @@ HPWHSimInput:
       Description: "The corresponding data group containing Standard 205 system component representations"
       Data Type: "{CentralWaterHeatingSystem}"
       Required: if system_type=CENTRAL
+    interpolate_cop:
+      Description: "Performance will be calculated by interpolating COP instead of capacity"
+      Notes: "This is used for historic consistency. New models should interpolate capacity."
+      Data Type: "Boolean"
+      Required: False
 
