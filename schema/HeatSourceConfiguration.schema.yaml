@@ -162,12 +162,12 @@ TemperatureBasedHeatingLogic:
       Description: "Weighted distribution for comparison, by division, in order"
       Data Type: "{WeightedDistribution}"
       Required: "if !standby_temperature_location"
-    checks_standby_logic:
+    checks_standby_logic: # Note: This is a remnant from legacy calibrations. Not clear it is still necessary.
       Description: "Check standby logic for activation"
       Data Type: Boolean
-      Notes: "Activates iff standby logic is also activated"
+      Notes: "Activates if and only if standby logic is also activated"
 
-StateOfChargeBasedHeatingLogic: # This probably needs some re-design to make it meaningful to a manufacturer
+StateOfChargeBasedHeatingLogic: # Note: This probably needs some re-design to make it meaningful to a manufacturer
   Object Type: "Data Group"
   Data Group Template: HeatingLogicTemplate
   Data Elements:

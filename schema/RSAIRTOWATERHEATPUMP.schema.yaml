@@ -127,7 +127,7 @@ LookupVariables:
       Units: "W"
       Required: True
 
-MaximumSetpointAtLowTemperature:
+MaximumSetpointAtLowTemperature: # Note: Legacy approach. Could be made more flexible as a lookup table.
   Object Type: "Data Group"
   Data Elements:
     threshold_environment_temperature:
@@ -136,12 +136,12 @@ MaximumSetpointAtLowTemperature:
       Units: "K"
       Required: True
     maximum_setpoint_temperature:
-      Description: "Maximum setpoint temperature below threshold_temperature"
+      Description: "Maximum setpoint temperature below `threshold_environment_temperature`"
       Data Type: Numeric
       Units: "K"
       Required: True
 
-ResistanceElementDefrost:
+ResistanceElementDefrost: # Note: Legacy approach to handling defrost. Should maybe be built into performance map?
   Object Type: "Data Group"
   Data Elements:
     input_power:
@@ -149,7 +149,7 @@ ResistanceElementDefrost:
       Data Type: Numeric
       Units: "K"
       Required: True
-    lift_temperature:
+    lift_temperature: # Note: This is a legacy input for simplified modeling. Likely to be removed.
       Description: "Resulting increase of environment temperature"
       Data Type: Numeric
       Units: "K"
