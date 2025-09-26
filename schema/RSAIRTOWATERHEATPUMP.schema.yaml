@@ -53,7 +53,7 @@ MaximumSetpointAtLowTemperature:
       Units: "K"
       Required: True
     maximum_setpoint_temperature:
-      Description: "Maximum setpoint temperature below threshold_temperature"
+      Description: "Maximum setpoint temperature below `threshold_environment_temperature`"
       Data Type: Numeric
       Units: "K"
       Required: True
