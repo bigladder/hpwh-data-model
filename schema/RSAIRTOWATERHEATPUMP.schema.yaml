@@ -43,7 +43,7 @@ ProductInformation:
       Data Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
-
+            
 Performance:
   Object Type: "Data Group"
   Data Elements:
@@ -70,7 +70,15 @@ Performance:
     use_defrost_map: # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
       Data Type: Boolean
-
+    maximum_setpoint_at_low_temperature:
+      Description: "Use maximum setpoint temperature at low environment temperature."
+      Data Type: "{MaximumSetpointAtLowTemperature}"
+      Required: False
+    resistance_element_defrost: 
+      Description: "Resistance element for defrost"
+      Data Type: "{ResistanceElementDefrost}"
+      Required: False      
+      
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
@@ -117,4 +125,37 @@ LookupVariables:
       Description: "Total heat added by the condenser to the adjacent water"
       Data Type: "[Numeric]"
       Units: "W"
+      Required: True
+
+MaximumSetpointAtLowTemperature: # Note: Legacy approach. Could be made more flexible as a lookup table.
+  Object Type: "Data Group"
+  Data Elements:
+    threshold_environment_temperature:
+      Description: "Low environment-temperature threshold for setpoint control"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    maximum_setpoint_temperature:
+      Description: "Maximum setpoint temperature below `threshold_environment_temperature`"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+
+ResistanceElementDefrost: # Note: Legacy approach to handling defrost. Should maybe be built into performance map?
+  Object Type: "Data Group"
+  Data Elements:
+    input_power:
+      Description: "Input power"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    lift_temperature: # Note: This is a legacy input for simplified modeling. Likely to be removed.
+      Description: "Resulting increase of environment temperature"
+      Data Type: Numeric
+      Units: "K"
+      Required: True
+    activation_temperature:
+      Description: "Low environment temperature for activation"
+      Data Type: Numeric
+      Units: "K"
       Required: True
