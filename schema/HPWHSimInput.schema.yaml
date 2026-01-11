@@ -24,41 +24,41 @@ HPWHSimInput:
   Data Elements:
     metadata:
       Description: "Metadata data group"
-      Data Type: "{Metadata}"
+      Type: "{Metadata}"
       Constraints: schema_name="HPWHSimInput"
       Required: True
     number_of_nodes:
       Description: "Number of tank nodes used for simulation"
-      Data Type: "Integer"
+      Type: "Integer"
       Constraints: ">0"
     depresses_temperature:
       Description: "Depresses space temperature when activated"
-      Data Type: Boolean
+      Type: Boolean
     fixed_volume: # TODO: Clarify description. Rename?
       Description: "Tank is not allowed to change volume"
-      Data Type: "Boolean"
+      Type: "Boolean"
       Required: False
     standard_setpoint:
       Description: "Standard setpoint"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "K"
       Required: False
     system_type:
       Description: "System Type"
-      Data Type: "<HPWHSystemType>"
+      Type: "<HPWHSystemType>"
       Required: True
       Notes: "Determines which heat source data group is used for `heat_source`"
     integrated_system:
       Description: "The corresponding Standard 205 integrated water heater system"
-      Data Type: "{RSINTEGRATEDWATERHEATER}"
+      Type: "{RSINTEGRATEDWATERHEATER}"
       Required: if system_type=INTEGRATED
     central_system:
       Description: "The corresponding data group containing Standard 205 system component representations"
-      Data Type: "{CentralWaterHeatingSystem}"
+      Type: "{CentralWaterHeatingSystem}"
       Required: if system_type=CENTRAL
     interpolate_cop:
       Description: "Performance will be calculated by interpolating COP instead of capacity"
       Notes: "This is used for historic consistency. New models should interpolate capacity."
-      Data Type: "Boolean"
+      Type: "Boolean"
       Required: False
 

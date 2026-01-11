@@ -24,43 +24,43 @@ CentralWaterHeatingSystem:
   Data Elements:
     tank:
       Description: "The corresponding Standard 205 tank representation"
-      Data Type: "{RSTANK}"
+      Type: "{RSTANK}"
       Required: True
     heat_source_configurations:
       Description: "Describes how the heat sources are configured within the tank"
-      Data Type: "[{HeatSourceConfiguration}]"
+      Type: "[{HeatSourceConfiguration}]"
     primary_heat_source_id:
       Description: "Turns on independently of other heat sources"
-      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+      Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
     standby_power:
       Description: "Power drawn when system is in standby mode"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Constraints: ">0.0"
       Units: "W"
       Constraints: ">0"
     external_inlet_height:
       Description: "Fractional tank height of inlet"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "-"
       Constraints: ">=0.0"
     external_outlet_height:
       Description: "Fractional tank height of outlet"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "-"
       Constraints: ">=0.0"
     control_type:
       Description: "Control type"
-      Data Type: "<ControlType>"
+      Type: "<ControlType>"
       Required: True
     fixed_flow_rate:
       Description: "Flow rate, if multipass system"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "m3/s"
       Constraints: ">0"
       Required: if control_type=FIXED_FLOW_RATE
     secondary_heat_exchanger:
       Description: "Secondary heat exchanger"
-      Data Type: "{SecondaryHeatExchanger}"
+      Type: "{SecondaryHeatExchanger}"
       Notes: "Used if an intermediate water loop is needed to separate the refrigerant coil from the potable water"
       Required: False
 
@@ -70,17 +70,17 @@ SecondaryHeatExchanger:
   Data Elements:
     cold_side_temperature_offset:
       Description: "Cold-side offset temperature"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "K"
       Required: True
     hot_side_temperature_offset:
       Description: "Hot-side offset temperature"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "K"
       Required: True
     extra_pump_power:
       Description: "Extra pump power"
-      Data Type: "Numeric"
+      Type: "Numeric"
       Units: "W"
       Constraints: ">0"
       Required: True
