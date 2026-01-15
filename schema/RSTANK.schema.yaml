@@ -47,20 +47,24 @@ Performance:
   Object Type: "Data Group"
   Data Elements:
     volume:
+      Description: "Tank volume"
       Type: "Numeric"
       Units: "m3"
       Constraints: ">=0.0"
       Required: True
     diameter:
+      Description: "Diameter of the cylindrical tank"
       Type: "Numeric"
       Units: "m"
       Constraints: ">=0.0"
     ua:
+      Description: "UA"
       Type: "Numeric"
       Units: "W/K"
       Constraints: ">=0.0"
       Required: True
     fittings_ua:
+      Description: "Fittings UA"
       Type: "Numeric"
       Units: "W/K"
       Constraints: ">=0.0"

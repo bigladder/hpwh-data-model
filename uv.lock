@@ -9,7 +9,7 @@ resolution-markers = [
 [[package]]
 name = "atheneum-forge"
 version = "0.1.0"
-source = { git = "https://github.com/bigladder/atheneum-forge?branch=make-textual-app#9dbc33d225c4ce75507c9168ac7e304f7fba0857" }
+source = { git = "https://github.com/bigladder/atheneum-forge#f88afb9737c252a2708e08e7f011447cd83fe83d" }
 dependencies = [
     { name = "click" },
     { name = "jinja2" },
@@ -346,7 +346,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "lattice", git = "https://github.com/bigladder/lattice.git?branch=integrate-forge" }]
+requires-dist = [{ name = "lattice", git = "https://github.com/bigladder/lattice.git" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -417,7 +417,7 @@ wheels = [
 [[package]]
 name = "lattice"
 version = "0.0.0"
-source = { git = "https://github.com/bigladder/lattice.git?branch=integrate-forge#e60d4a056e9eedb47be0dba74d30d924ca3db395" }
+source = { git = "https://github.com/bigladder/lattice.git#577aa9a9cb746b53367e3a1a5d42ee980932a98d" }
 dependencies = [
     { name = "atheneum-forge" },
     { name = "cbor2" },
