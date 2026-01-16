@@ -29,7 +29,7 @@ HeatSourceType:
       Description: "Heat sources that operate by air-to-water heat pump systems"
       Display Text: "AirToWaterHeatPump"
       Notes: ""
-      
+
 HeatingLogicType:
   Object Type: "Enumeration"
   Enumerators:
@@ -67,55 +67,55 @@ HeatSourceConfiguration:
   Data Elements:
     id:
       Description: "Identifier for reference"
-      Data Type: "String"
+      Type: "String"
       Required: True
     heat_source_type:
       Description: "Type of heat source"
-      Data Type: "<HeatSourceType>"
+      Type: "<HeatSourceType>"
       Required: True
       Notes: "Determines which heat source data group is used for `heat_source`"
     heat_source:
       Description: "A corresponding Standard 205 heat-source representation"
-      Data Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
+      Type: "({RSRESISTANCEWATERHEATSOURCE},{RSCONDENSERWATERHEATSOURCE},{RSAIRTOWATERHEATPUMP})" # TODO: Air-to-water heat pump eventually needs to be replaced by a more generic External heat source
       Constraints: "heat_source_type(RESISTANCE, CONDENSER, AIRTOWATERHEATPUMP)"
       Required: True
     heat_distribution:
       Description: "Weighted distribution of heat from the heat source along the height of the tank"
-      Data Type: "{WeightedDistribution}"
+      Type: "{WeightedDistribution}"
       Required: True
     turn_on_logic:
       Description: "An array of logic conditions that define when the heat source turns on if it is currently off"
-      Data Type: "[{HeatingLogic}]"
+      Type: "[{HeatingLogic}]"
       Required: "if !backup_heat_source_id"
     shut_off_logic:
       Description: "An array of logic conditions that define when the heat source shuts off if it is currently on"
-      Data Type: "[{HeatingLogic}]"
+      Type: "[{HeatingLogic}]"
     standby_logic: # TODO: Is this needed?
       Description: "Checks that bottom is below a temperature to prevent short cycling"
-      Data Type: "{HeatingLogic}"
+      Type: "{HeatingLogic}"
       Required: "if !backup_heat_source_id"
     backup_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that engages if this one cannot meet the setpoint"
-      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+      Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
     followed_by_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that should always engage after this one"
-      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+      Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
     companion_heat_source_id:
       Description: "Reference to the `HeatSourceConfiguration` that should always engage concurrently with this one"
-      Data Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
+      Type: "String" # TODO: Make an actual reference type (need to use 232 compliant Lattice)
 
 WeightedDistribution:
   Object Type: "Data Group"
   Data Elements:
     normalized_height:
       Description: "Normalized heights within the tank where the weight is defined between the bottom (0.0), and the top (1.0)"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "-"
       Constraints: [">=0.0", "<=1.0"]
       Required: True
     weight:
       Description: "Weight at the corresponding normalized height"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "-"
       Constraints: [">=0.0"]
       Required: True
@@ -125,17 +125,17 @@ HeatingLogic:
   Data Elements:
     heating_logic_type:
       Description: "Type of heating logic"
-      Data Type: "<HeatingLogicType>"
+      Type: "<HeatingLogicType>"
       Required: True
       Notes: "Determines which heating-logic data group is used for `heating_logic`"
     heating_logic:
       Description: "Specific heating logic"
-      Data Type: "({StateOfChargeBasedHeatingLogic},{TemperatureBasedHeatingLogic})"
+      Type: "({StateOfChargeBasedHeatingLogic},{TemperatureBasedHeatingLogic})"
       Constraints: "heating_logic_type(STATE_OF_CHARGE_BASED, TEMPERATURE_BASED)"
       Required: True
     comparison_type:
       Description: "Result of comparison for activation"
-      Data Type: "<ComparisonType>"
+      Type: "<ComparisonType>"
       Required: True
 
 TemperatureBasedHeatingLogic:
@@ -144,27 +144,27 @@ TemperatureBasedHeatingLogic:
   Data Elements:
     absolute_temperature:
       Description: "Absolute temperature for activation"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Constraints: ">=0.0"
       Required: "if !differential_temperature"
     differential_temperature:
       Description: "Temperature difference for activation"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Constraints: ">=0.0"
       Required: "if !absolute_temperature"
     standby_temperature_location:
       Description: "Standby temperature location"
-      Data Type: "<StandbyTemperatureLocation>"
+      Type: "<StandbyTemperatureLocation>"
       Required: "if !temperature_weight_distribution"
     temperature_weight_distribution:
       Description: "Weighted distribution for comparison, by division, in order"
-      Data Type: "{WeightedDistribution}"
+      Type: "{WeightedDistribution}"
       Required: "if !standby_temperature_location"
     checks_standby_logic: # Note: This is a remnant from legacy calibrations. Not clear it is still necessary.
       Description: "Check standby logic for activation"
-      Data Type: Boolean
+      Type: Boolean
       Notes: "Activates if and only if standby logic is also activated"
 
 StateOfChargeBasedHeatingLogic: # Note: This probably needs some re-design to make it meaningful to a manufacturer
@@ -174,26 +174,26 @@ StateOfChargeBasedHeatingLogic: # Note: This probably needs some re-design to ma
     decision_point:
       Description: "Decision point"
       Constraints: ">=0.0"
-      Data Type: Numeric
+      Type: Numeric
       Units: "-"
       Required: True
     minimum_useful_temperature:
       Description: "Minimum useful temperature"
       Units: "K"
-      Data Type: Numeric
+      Type: Numeric
       Constraints: ">0.0"
     hysteresis_fraction:
       Description: "Hysteresis fraction"
-      Data Type: Numeric
+      Type: Numeric
       Units: "-"
       Constraints: [">=0.0", "<=1.0"]
     uses_constant_mains:
       Description: "Uses constant mains"
-      Data Type: Boolean
+      Type: Boolean
       Required: True
     constant_mains_temperature:
       Description: "Constant mains temperature"
       Constraints: ">0.0"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: "if uses_constant_mains"

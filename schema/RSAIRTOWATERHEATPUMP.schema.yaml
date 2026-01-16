@@ -13,15 +13,15 @@ RSAIRTOWATERHEATPUMP:
   Data Elements:
     metadata:
       Description: "Metadata data group"
-      Data Type: "{Metadata}"
+      Type: "{Metadata}"
       Constraints: schema_name="RSAIRTOWATERHEATPUMP"
       Required: True
     description:
       Description: "Data group describing product and rating information"
-      Data Type: "{Description}"
+      Type: "{Description}"
     performance:
       Description: "Data group containing performance information"
-      Data Type: "{Performance}"
+      Type: "{Performance}"
       Required: True
 
 Description:
@@ -29,66 +29,66 @@ Description:
   Data Elements:
     product_information:
       Description: "Data group describing product information"
-      Data Type: "{ProductInformation}"
+      Type: "{ProductInformation}"
 
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
     manufacturer:
       Description: "Manufacturer name"
-      Data Type: "String"
+      Type: "String"
       Required: True
     model_number:
       Description: "Model number"
-      Data Type: "Pattern"
+      Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
-            
+
 Performance:
   Object Type: "Data Group"
   Data Elements:
     performance_map:
       Description: "Performance map"
-      Data Type: "{PerformanceMap}"
+      Type: "{PerformanceMap}"
       Required: True
     standby_power:
       Description: ""
-      Data Type: Numeric
+      Type: Numeric
       Units: "W"
       Constraints: ">=0.0"
     maximum_refrigerant_temperature:
       Description: "Maximum temperature of the refrigerant entering the condenser"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
     compressor_lockout_temperature_hysteresis:
       Description: "Hysteresis for compressor lockout"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: False
       Notes:
         - "Compressor locks out when the evaporator environment temperature drops this much below the minimum operating temperature, and unlocks when the temperature rises this much above the minimum operating temperature"
     use_defrost_map: # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
-      Data Type: Boolean
+      Type: Boolean
     maximum_setpoint_at_low_temperature:
       Description: "Use maximum setpoint temperature at low environment temperature."
-      Data Type: "{MaximumSetpointAtLowTemperature}"
+      Type: "{MaximumSetpointAtLowTemperature}"
       Required: False
-    resistance_element_defrost: 
+    resistance_element_defrost:
       Description: "Resistance element for defrost"
-      Data Type: "{ResistanceElementDefrost}"
-      Required: False      
-      
+      Type: "{ResistanceElementDefrost}"
+      Required: False
+
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
     grid_variables:
       Description: "Data group defining the grid variables for heating performance"
-      Data Type: "{GridVariables}"
+      Type: "{GridVariables}"
       Required: True
     lookup_variables:
       Description: "Data group defining the lookup variables for heating performance"
-      Data Type: "{LookupVariables}"
+      Type: "{LookupVariables}"
       Required: True
 
 GridVariables:
@@ -96,12 +96,12 @@ GridVariables:
   Data Elements:
     evaporator_environment_dry_bulb_temperature:
       Description: "Dry bulb temperature of the air entering the evaporator coil"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "K"
       Required: True
     condenser_entering_temperature:
       Description: "Average water temperature entering the condenser"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "K"
       Required: True
       Notes:
@@ -109,7 +109,7 @@ GridVariables:
         - "The average water temperature may be weighted according to how heat is distributed to the water from the heat source"
     condenser_leaving_temperature:
       Description: "Average water temperature leaving the condenser"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "K"
       Required: True
 
@@ -118,12 +118,12 @@ LookupVariables:
   Data Elements:
     input_power:
       Description: "Power draw from the compressor, evaporator fan, and any auxiliary power used by the units controls"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "W"
       Required: True
     heating_capacity:
       Description: "Total heat added by the condenser to the adjacent water"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "W"
       Required: True
 
@@ -132,12 +132,12 @@ MaximumSetpointAtLowTemperature: # Note: Legacy approach. Could be made more fle
   Data Elements:
     threshold_environment_temperature:
       Description: "Low environment-temperature threshold for setpoint control"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: True
     maximum_setpoint_temperature:
       Description: "Maximum setpoint temperature below `threshold_environment_temperature`"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: True
 
@@ -146,16 +146,16 @@ ResistanceElementDefrost: # Note: Legacy approach to handling defrost. Should ma
   Data Elements:
     input_power:
       Description: "Input power"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: True
     lift_temperature: # Note: This is a legacy input for simplified modeling. Likely to be removed.
       Description: "Resulting increase of environment temperature"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: True
     activation_temperature:
       Description: "Low environment temperature for activation"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: True

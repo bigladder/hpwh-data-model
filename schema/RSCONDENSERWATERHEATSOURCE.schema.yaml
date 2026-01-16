@@ -13,15 +13,15 @@ RSCONDENSERWATERHEATSOURCE:
   Data Elements:
     metadata:
       Description: "Metadata data group"
-      Data Type: "{Metadata}"
+      Type: "{Metadata}"
       Constraints: schema_name="RSCONDENSERWATERHEATSOURCE"
       Required: True
     description:
       Description: "Data group describing product and rating information"
-      Data Type: "{Description}"
+      Type: "{Description}"
     performance:
       Description: "Data group containing performance information"
-      Data Type: "{Performance}"
+      Type: "{Performance}"
       Required: True
 
 Description:
@@ -29,18 +29,18 @@ Description:
   Data Elements:
     product_information:
       Description: "Data group describing product information"
-      Data Type: "{ProductInformation}"
+      Type: "{ProductInformation}"
 
 ProductInformation:
   Object Type: "Data Group"
   Data Elements:
     manufacturer:
       Description: "Manufacturer name"
-      Data Type: "String"
+      Type: "String"
       Required: True
     model_number:
       Description: "Model number"
-      Data Type: "Pattern"
+      Type: "Pattern"
       Notes: "Pattern shall match all model numbers that can be represented by the representation"
       Required: True
 
@@ -49,42 +49,42 @@ Performance:
   Data Elements:
     performance_map:
       Description: "Performance map"
-      Data Type: "{PerformanceMap}"
+      Type: "{PerformanceMap}"
       Required: True
     standby_power:
       Description: ""
-      Data Type: Numeric
+      Type: Numeric
       Units: "W"
       Constraints: ">=0.0"
     coil_configuration:
       Description: "Coil configuration"
-      Data Type: "<CoilConfiguration>"
+      Type: "<CoilConfiguration>"
       Required: True
     maximum_refrigerant_temperature:
       Description: "Maximum temperature of the refrigerant entering the condenser"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
     compressor_lockout_temperature_hysteresis:
       Description: "Hysteresis for compressor lockout"
-      Data Type: Numeric
+      Type: Numeric
       Units: "K"
       Required: False
       Notes:
         - "Compressor locks out when the evaporator environment temperature drops this much below the minimum operating temperature, and unlocks when the temperature rises this much above the minimum operating temperature"
     use_defrost_map: # TODO: Remove and add defrost de-rating into performance map
       Description: "Use defrost map"
-      Data Type: Boolean
+      Type: Boolean
 
 PerformanceMap:
   Object Type: "Data Group"
   Data Elements:
     grid_variables:
       Description: "Data group defining the grid variables for heating performance"
-      Data Type: "{GridVariables}"
+      Type: "{GridVariables}"
       Required: True
     lookup_variables:
       Description: "Data group defining the lookup variables for heating performance"
-      Data Type: "{LookupVariables}"
+      Type: "{LookupVariables}"
       Required: True
 
 GridVariables:
@@ -92,12 +92,12 @@ GridVariables:
   Data Elements:
     evaporator_environment_dry_bulb_temperature:
       Description: "Dry bulb temperature of the air entering the evaporator coil"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "K"
       Required: True
     heat_source_temperature:
       Description: "Average water temperature at the heat source"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "K"
       Required: True
       Notes:
@@ -109,12 +109,12 @@ LookupVariables:
   Data Elements:
     input_power:
       Description: "Power draw from the compressor, evaporator fan, and any auxiliary power used by the units controls"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "W"
       Required: True
     heating_capacity:
       Description: "Total heat added by the condenser to the adjacent water"
-      Data Type: "[Numeric]"
+      Type: "[Numeric]"
       Units: "W"
       Required: True
 
