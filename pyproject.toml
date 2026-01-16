@@ -15,4 +15,4 @@ dev = [
 [tool.uv]
 
 [tool.uv.sources]
-lattice = { git = "https://github.com/bigladder/lattice.git" }
+lattice = { git = "https://github.com/bigladder/lattice.git", branch = "add-back-support-headers" }
